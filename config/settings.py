@@ -70,7 +70,6 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [BASE_DIR / "core/static"]
-STATIC_URL = '/static/'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

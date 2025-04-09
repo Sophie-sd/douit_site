@@ -1,0 +1,213 @@
+:root {
+    --color-accent:     #00BBD4;   /* Бірюзовий */
+    --color-bg:         #0A1A23;   /* Темний фон */
+    --color-text:       #FFFFFF;   /* Білий */
+    --color-graphite:   #1C1C1E;   /* Графітовий */
+    --color-soft:       #F5E9DA;   /* Пісочний / Теплий акцент */
+
+    /* TODO: Додати змінні для шрифтів, якщо потрібно */
+    --font-main: 'Segoe UI', 'Inter', system-ui, sans-serif; /* Приклад */
+    --base-font-size: 16px;
+    --base-line-height: 1.6;
+}
+
+/* Basic Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Плавний скрол */
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Basic Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75em;
+    font-weight: bold;
+    /* TODO: Налаштувати розміри заголовків */
+}
+
+h1 {
+    font-size: 2.5rem; /* Приклад */
+}
+
+h2 {
+    font-size: 2rem; /* Приклад */
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-soft);
+    /* TODO: Додати кращий стиль для hover/focus посилань */
+}
+
+/* Layout Structure */
+header,
+main,
+footer {
+    width: 100%;
+    max-width: 1200px; /* Або інше значення для обмеження ширини контенту */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 2rem; /* Базові відступи з боків */
+    /* TODO: Налаштувати відступи та max-width */
+}
+
+main {
+    flex-grow: 1; /* Дозволяє main зайняти весь доступний простір між header і footer */
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    /* TODO: Додати фон, тінь, фіксацію, якщо потрібно */
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text); /* Логотип білий */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* Відстань між пунктами меню */
+}
+
+nav a {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    /* TODO: Додати стиль для активного пункту меню */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a:focus::after {
+    width: 100%;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: auto; /* Притискає футер до низу */
+    background-color: var(--color-graphite); /* Приклад фону для футера */
+    /* TODO: Додати більше контенту та стилів для футера */
+}
+
+/* --- Buttons --- */
+.button,
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.button:hover,
+.cta-button:hover {
+    background-color: #0097A7; /* Трохи темніший бірюзовий */
+    transform: translateY(-2px);
+}
+
+/* --- Sections --- */
+/* Базовий клас для всіх секцій */
+section {
+    padding: 60px 0; /* Вертикальні відступи між секціями */
+}
+
+/* Додаткові класи для секцій з `home.html` (поки порожні) */
+.hero {
+    /* TODO: Стилі для Hero блоку */
+    text-align: center; /* Приклад */
+}
+
+.benefits {
+    /* TODO: Стилі для секції переваг */
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    /* TODO: Додати стилі для елементів сітки */
+}
+
+.services-overview {
+     /* TODO: Стилі для секції послуг */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+     /* TODO: Додати стилі для елементів сітки */
+}
+
+.cases-preview {
+     /* TODO: Стилі для секції кейсів */
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+     /* TODO: Додати стилі для елементів сітки */
+}
+
+.cta {
+     /* TODO: Стилі для CTA секції */
+     text-align: center;
+     background-color: var(--color-graphite); /* Приклад фону */
+     border-radius: 16px;
+}

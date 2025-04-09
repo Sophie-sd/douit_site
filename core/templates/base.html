@@ -1,12 +1,49 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT-рішення для бізнесу</title>
+  <title>DOuIT - {% block title %}IT-рішення для бізнесу{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_head %}{% endblock %}
 </head>
 <body>
-  {% block content %}{% endblock %}
+
+  <!-- Header -->
+  <header>
+    <a href="{% url 'home' %}" class="logo">DOuIT</a>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Головна</a></li>
+        <li><a href="{% url 'services' %}">Послуги</a></li>
+        <li><a href="{% url 'cases' %}">Кейси</a></li>
+        <li><a href="{% url 'blog' %}">Блог</a></li>
+        <li><a href="{% url 'about' %}">Про нас</a></li>
+        <li><a href="{% url 'faq' %}">FAQ</a></li>
+        <li><a href="{% url 'contacts' %}">Контакти</a></li>
+      </ul>
+    </nav>
+    <!-- End Navigation -->
+
+  </header>
+  <!-- End Header -->
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <!-- End Main Content -->
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; {% now "Y" %} DOuIT. Всі права захищено.</p>
+  </footer>
+  <!-- End Footer -->
+
+  {% block extra_scripts %}{% endblock %}
 </body>
 </html>

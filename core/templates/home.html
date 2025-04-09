@@ -1,5 +1,64 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Головна - IT-рішення для вашого бізнесу{% endblock %}
+
 {% block content %}
-<h1>Вітаємо в DOuIT</h1>
-<p>Ми створюємо цифрові рішення для бізнесу</p>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        {# TODO: Додати контент Hero-блоку: заголовок, підзаголовок, CTA-кнопка, можливо фонове зображення #}
+        <h1>Інноваційні IT-рішення для вашого успіху</h1>
+        <p>Створюємо ефективні сайти, додатки та боти, які допомагають бізнесу зростати.</p>
+        <a href="{% url 'contacts' %}" class="cta-button">Обговорити проєкт</a>
+    </section>
+    <!-- End Hero Section -->
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        {# TODO: Додати контент секції Переваг: 3-4 ключові переваги з іконками/коротким описом #}
+        <h2>Наші переваги</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">Індивідуальний підхід</div>
+            <div class="benefit-item">Сучасні технології</div>
+            <div class="benefit-item">Прозорий процес</div>
+            <div class="benefit-item">Підтримка та розвиток</div>
+        </div>
+    </section>
+    <!-- End Benefits Section -->
+
+    <!-- Services Overview Section -->
+    <section class="services-overview">
+        {# TODO: Додати контент секції Послуг: 3-4 основні послуги з коротким описом та посиланням #}
+        <h2>Послуги</h2>
+        <div class="services-grid">
+            <div class="service-item">Розробка сайтів</div>
+            <div class="service-item">Веб-додатки</div>
+            <div class="service-item">Telegram-боти</div>
+        </div>
+        <a href="{% url 'services' %}" class="button">Всі послуги</a>
+    </section>
+    <!-- End Services Overview Section -->
+
+    <!-- Cases Preview Section -->
+    <section class="cases-preview">
+        {# TODO: Додати контент секції Кейсів: 2-3 приклади кейсів з картинками та посиланням #}
+        <h2>Кейси</h2>
+        <div class="cases-grid">
+            <div class="case-item">Кейс 1</div>
+            <div class="case-item">Кейс 2</div>
+        </div>
+        <a href="{% url 'cases' %}" class="button">Дивитись портфоліо</a>
+    </section>
+    <!-- End Cases Preview Section -->
+
+    <!-- CTA Section -->
+    <section class="cta">
+        {# TODO: Додати контент CTA-секції: заклик, можливо проста форма або кнопка #}
+        <h2>Готові розпочати?</h2>
+        <p>Зв'яжіться з нами для безкоштовної консультації.</p>
+        <a href="{% url 'contacts' %}" class="cta-button">Отримати консультацію</a>
+    </section>
+    <!-- End CTA Section -->
+
 {% endblock %}
