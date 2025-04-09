@@ -22,3 +22,6 @@ venv/
 # Static/media
 staticfiles/
 media/
+
+.cursor/
+
