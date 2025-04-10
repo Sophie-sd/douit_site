@@ -67,19 +67,18 @@ a:focus {
 }
 
 /* Layout Structure */
-header,
 main,
 footer {
     width: 100%;
-    max-width: 1200px; /* Або інше значення для обмеження ширини контенту */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem 2rem; /* Базові відступи з боків */
-    /* TODO: Налаштувати відступи та max-width */
+    padding: 1rem 2rem;
 }
 
 main {
-    flex-grow: 1; /* Дозволяє main зайняти весь доступний простір між header і footer */
+    flex-grow: 1;
+    padding-top: 90px;
 }
 
 /* --- Header & Navigation --- */
@@ -87,21 +86,37 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    /* TODO: Додати фон, тінь, фіксацію, якщо потрібно */
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-bg); /* Fallback */
+    background-color: rgba(10, 26, 35, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1); /* Світла тінь знизу */
+    transition: padding-top 0.3s ease, padding-bottom 0.3s ease;
 }
 
 header .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-text); /* Логотип білий */
+    color: var(--color-text);
+    z-index: 10;
+}
+
+nav {
+    /* За замовчуванням для десктопа */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem; /* Відстань між пунктами меню */
+    gap: 1.5rem;
 }
 
 nav a {
@@ -128,13 +143,49 @@ nav a:focus::after {
     width: 100%;
 }
 
+/* --- Burger Menu --- */
+.burger-menu-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.burger-menu-button span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Стилі для анімації бургер->хрестик */
+.mobile-nav-active .burger-menu-button span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.mobile-nav-active .burger-menu-button span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-nav-active .burger-menu-button span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
 /* --- Footer --- */
 footer {
     text-align: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    margin-top: auto; /* Притискає футер до низу */
-    background-color: var(--color-graphite); /* Приклад фону для футера */
+    margin-top: auto;
+    background-color: var(--color-graphite);
     /* TODO: Додати більше контенту та стилів для футера */
 }
 
@@ -156,31 +207,130 @@ footer {
 
 .button:hover,
 .cta-button:hover {
-    background-color: #0097A7; /* Трохи темніший бірюзовий */
+    background-color: #0097A7;
     transform: translateY(-2px);
 }
 
 /* --- Sections --- */
-/* Базовий клас для всіх секцій */
 section {
-    padding: 60px 0; /* Вертикальні відступи між секціями */
+    padding: 60px 0;
 }
 
-/* Додаткові класи для секцій з `home.html` (поки порожні) */
+/* Додаткові класи для секцій з `home.html` */
 .hero {
     /* TODO: Стилі для Hero блоку */
-    text-align: center; /* Приклад */
+    text-align: center;
 }
 
 .benefits {
     /* TODO: Стилі для секції переваг */
 }
 
+.benefits h2 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    /* TODO: Додати стилі для елементів сітки */
+    perspective: 1000px;
+}
+
+/* Стилі для Flip Card */
+.benefit-card {
+    background-color: transparent;
+    min-height: 250px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Контейнер для ефекту перевертання */
+.benefit-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    transform-origin: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+}
+
+/* Стиль для передньої та задньої сторін */
+.benefit-card-front,
+.benefit-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Стиль передньої сторони */
+.benefit-card-front {
+    background: linear-gradient(145deg, var(--color-graphite), #2c3e50);
+    color: var(--color-text);
+    /* TODO: Додати місце для іконки */
+}
+
+.benefit-card-front h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+/* Стилізація для індикатора >> (без absolute) */
+.flip-indicator {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.benefit-card:hover .flip-indicator {
+    opacity: 0.9;
+}
+
+/* Стиль задньої сторони */
+.benefit-card-back {
+    background: #112233;
+    color: var(--color-text);
+    transform: rotateY(180deg);
+}
+
+.benefit-card-back h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.7em;
+}
+
+.benefit-card-back p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Клас для активації перевертання */
+.benefit-card.is-flipped .benefit-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Стиль фокусу для доступності */
+.benefit-card:focus .benefit-card-inner {
+    box-shadow: 0 0 0 3px var(--color-soft);
 }
 
 .services-overview {
@@ -208,6 +358,119 @@ section {
 .cta {
      /* TODO: Стилі для CTA секції */
      text-align: center;
-     background-color: var(--color-graphite); /* Приклад фону */
+     background-color: var(--color-graphite);
      border-radius: 16px;
+}
+
+/* --- Responsive Design --- */
+
+/* Планшети (до 992px) */
+@media (max-width: 992px) {
+    main,
+    footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    main {
+        padding-top: 80px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .services-grid,
+    .cases-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* Мобільні пристрої (до 767px) */
+@media (max-width: 767px) {
+    main,
+    footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    main {
+        padding-top: 70px;
+    }
+
+    header {
+        /* Mobile header adjustments if needed */
+    }
+
+    .burger-menu-button {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(10, 26, 35, 0.98);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-100%);
+        transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+        z-index: 999;
+    }
+
+    .mobile-nav-active nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .services-grid,
+    .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .button,
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }

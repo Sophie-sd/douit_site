@@ -16,8 +16,10 @@
 
     <!-- Navigation -->
     <nav>
+      {# Навігація для десктопа / контейнер для мобільного меню #}
       <ul>
-        <li><a href="{% url 'home' %}">Головна</a></li>
+        {# Видаляємо пункт "Головна" #}
+        {# <li><a href="{% url 'home' %}">Головна</a></li> #}
         <li><a href="{% url 'services' %}">Послуги</a></li>
         <li><a href="{% url 'cases' %}">Кейси</a></li>
         <li><a href="{% url 'blog' %}">Блог</a></li>
@@ -27,6 +29,14 @@
       </ul>
     </nav>
     <!-- End Navigation -->
+
+    <!-- Burger Menu Button -->
+    <button class="burger-menu-button" aria-label="Відкрити меню" aria-expanded="false">
+      <span></span> {# Лінії бургера будуть створені через CSS #}
+      <span></span>
+      <span></span>
+    </button>
+    <!-- End Burger Menu Button -->
 
   </header>
   <!-- End Header -->
@@ -44,6 +54,8 @@
   </footer>
   <!-- End Footer -->
 
+  {# TODO: Підключити основний JS-файл, якщо потрібно #}
+  <script src="{% static 'js/main.js' %}"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>
