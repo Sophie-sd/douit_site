@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Burger Menu Logic
     const burgerButton = document.querySelector('.burger-menu-button');
-    const nav = document.querySelector('nav'); // Або інший селектор для контейнера меню
+    const nav = document.querySelector('header nav'); // Уточнений селектор
     const body = document.body; // Будемо додавати клас до body
 
     if (burgerButton && nav) {
