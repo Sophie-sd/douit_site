@@ -45,7 +45,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2.5rem; /* Приклад */
+    font-size: 3rem; 
+    margin-bottom: 0.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+    opacity: 0; /* Ховаємо для анімації */
+    animation: fadeUpEntrance 0.8s ease-out 1.0s forwards; /* Затримка після лого */
 }
 
 h2 {
@@ -69,18 +73,54 @@ a:focus {
 }
 
 /* Layout Structure */
-main,
+main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    flex-grow: 1;
+}
+
+/* Контейнер для секцій зі стандартною шириною */
+.content-container {
+    width: 100%;
+    max-width: 1200px; /* Стандартна максимальна ширина */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem; /* Стандартні горизонтальні відступи */
+    padding-right: 2rem;
+}
+
+/* Застосовуємо стандартну ширину до потрібних секцій */
+.services-overview,
+.process {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Окремо для .services-overview, бо він мав padding-top: 0 */
+.services-overview {
+    padding-top: 0;
+    margin-bottom: 1rem; /* Зменшуємо відступ знизу */
+}
+
 footer {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem 2rem;
-}
-
-main {
-    flex-grow: 1;
-    padding-top: 90px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* --- Header & Navigation --- */
@@ -367,18 +407,23 @@ section {
     justify-content: center; 
     align-items: center; 
     background-image: 
-        linear-gradient(rgba(10, 26, 35, 0.4), rgba(10, 26, 35, 0.5)),
+        linear-gradient(to bottom, var(--color-bg) 0%, transparent 15%), /* Верхнє розмиття/перехід */
+        linear-gradient(to bottom, transparent 85%, var(--color-bg) 100%), /* Нижнє розмиття/перехід */
+        linear-gradient(rgba(10, 26, 35, 0.4), rgba(10, 26, 35, 0.5)), /* Основне затемнення */
         url('../img/hero-background.jpg'); 
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
     color: var(--color-text);
+    margin-bottom: 5rem; /* Збільшуємо відступ знизу */
 }
 
 .hero h1 {
     font-size: 3rem; 
     margin-bottom: 0.5em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+    opacity: 0; /* Ховаємо для анімації */
+    animation: fadeUpEntrance 0.8s ease-out 1.0s forwards; /* Затримка після лого */
 }
 
 .hero p {
@@ -388,15 +433,42 @@ section {
     margin-left: auto;
     margin-right: auto;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+    opacity: 0; /* Ховаємо для анімації */
+    animation: fadeUpEntrance 0.8s ease-out 1.2s forwards; /* Затримка після h1 */
 }
 
 .hero .cta-button {
     padding: 14px 28px;
     font-size: 1.1rem;
+    opacity: 0; /* Ховаємо для анімації */
+    animation: fadeUpEntrance 0.8s ease-out 1.4s forwards; /* Затримка після p */
 }
 
 .benefits {
     /* TODO: Стилі для секції переваг */
+    background-image:
+        linear-gradient(to bottom, var(--color-bg) 0%, transparent 30%), /* Верхнє плавне розмиття */
+        linear-gradient(to bottom, transparent 70%, var(--color-bg) 100%), /* Нижнє плавне розмиття */
+        linear-gradient(rgba(10, 26, 35, 0.5), rgba(10, 26, 35, 0.6)), /* Основне затемнення */
+        url('../img/benefits-background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Залишаємо тільки вертикальні відступи, щоб фон був на всю ширину */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin-bottom: 3rem; /* Зменшуємо відступ знизу */
+    /* Прибираємо padding-left та padding-right */
+}
+
+/* Новий контейнер для вмісту секції Переваги */
+.benefits-content-container {
+    width: 100%;
+    max-width: 1200px; /* Стандартна максимальна ширина */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem; /* Стандартні горизонтальні відступи */
+    padding-right: 2rem;
 }
 
 .benefits h2 {
@@ -418,13 +490,15 @@ section {
     border: none;
     cursor: pointer;
     outline: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Змінюємо transition для плавності тіні */
+    transition: transform 0.3s ease, box-shadow 0.4s ease; 
 }
 
-/* Додаємо hover-ефект для карток переваг */
+/* Покращуємо hover-ефект */
 .benefit-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 187, 212, 0.2);
+    /* Робимо тінь більш виразною з акцентним кольором */
+    box-shadow: 0 10px 30px rgba(0, 187, 212, 0.3); 
 }
 
 /* Контейнер для ефекту перевертання */
@@ -438,6 +512,8 @@ section {
     transform-origin: center;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
+    /* Додаємо тонку рамку */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
 /* Стиль для передньої та задньої сторін */
@@ -460,15 +536,17 @@ section {
 
 /* Стиль передньої сторони */
 .benefit-card-front {
+    /* Повертаємо попередній діагональний градієнт */
     background: linear-gradient(145deg, var(--color-graphite), #2c3e50);
 }
 
 .benefit-card-front h3 {
     font-size: 1.3rem;
+    margin-top: 10px; /* Додаємо відступ зверху, якщо є іконка */
     margin-bottom: 0;
 }
 
-/* Стилізація для індикатора >> (без absolute) */
+/* Стилізація для індикатора >> */
 .flip-indicator {
     display: block;
     margin-top: 10px;
@@ -476,17 +554,22 @@ section {
     font-weight: bold;
     color: var(--color-accent);
     opacity: 0.6;
-    transition: opacity 0.3s ease;
+    /* Додаємо transition для анімації */
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease; 
     pointer-events: none;
 }
 
+/* Анімація індикатора при наведенні на картку */
 .benefit-card:hover .flip-indicator {
-    opacity: 0.9;
+    opacity: 1; /* Робимо повністю видимим */
+    transform: translateX(5px); /* Легкий зсув вправо */
+    color: var(--color-soft); /* Змінюємо колір для акценту */
 }
 
 /* Стиль задньої сторони */
 .benefit-card-back {
-    background: #112233;
+    /* Замінюємо суцільний фон на горизонтальний градієнт (темний по краях, світліший в центрі) */
+    background: linear-gradient(to right, #112233, #203344, #112233); 
     transform: rotateY(180deg);
 }
 
@@ -511,9 +594,26 @@ section {
     box-shadow: 0 0 0 3px var(--color-soft);
 }
 
+/* Стилі для плейсхолдера іконки (додати div з цим класом в HTML) */
+.benefit-icon-placeholder {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-bottom: 15px; 
+    display: flex; /* Використовуємо flex для центрування майбутньої іконки */
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Розмір для плейсхолдера чи іконки */
+    color: var(--color-accent); 
+    /* Тут можна буде додати SVG або font-icon */
+}
+
 .services-overview {
     text-align: center;
     padding-top: 0;
+    margin-bottom: 5rem; /* Збільшуємо відступ знизу */
 }
 
 .services-overview h2 {
@@ -585,9 +685,40 @@ section {
 }
 
 .cta {
+    /* Прибираємо обмеження ширини, щоб фон був повним */
+    /* max-width: 1200px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* padding-left: 2rem; */
+    /* padding-right: 2rem; */
+    
+    /* Збільшуємо вертикальні відступи для фону */
+    padding-top: 120px; /* Збільшуємо */
+    padding-bottom: 120px; /* Збільшуємо */
+
+    /* Змінюємо фон на зображення зі світлішим затемненням */
+    background-image: 
+        linear-gradient(to bottom, var(--color-bg) 0%, transparent 30%), /* Верхнє плавне розмиття */
+        linear-gradient(to bottom, transparent 70%, var(--color-bg) 100%), /* Нижнє плавне розмиття */
+        linear-gradient(rgba(10, 26, 35, 0.5), rgba(10, 26, 35, 0.6)), /* Основне затемнення */
+        url('../img/benefits-background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
     text-align: center;
-    border-radius: 16px;
-    padding: 3rem 2rem;
+    border-radius: 0; /* Прибираємо скруглення, бо секція на всю ширину */
+    /* margin-bottom: 2rem; -- Прибираємо відступ перед футером */
+}
+
+/* Новий контейнер для вмісту CTA */
+.cta-content-container {
+    width: 100%;
+    max-width: 1200px; /* Стандартна максимальна ширина */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem; /* Стандартні горизонтальні відступи */
+    padding-right: 2rem;
 }
 
 .cta h2 {
@@ -669,6 +800,7 @@ section {
 .process {
     text-align: center;
     overflow-x: hidden;
+    margin-bottom: 3rem; /* Збільшуємо відступ знизу перед CTA */
 }
 
 .process h2 {
@@ -722,6 +854,35 @@ section {
     display: block;
     margin-bottom: 0.8em;
     font-weight: 600;
+}
+
+/* --- Загальна анімація появи --- */
+@keyframes fadeUpEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Стилі для анімації при скролі --- */
+/* Коментар: Ці стилі працюватимуть тільки з додаванням JavaScript, 
+   який буде додавати клас '.is-visible' до елементів з класом '.animate-on-scroll', 
+   коли вони потрапляють у видиму область (viewport) за допомогою Intersection Observer. */
+
+.animate-on-scroll {
+  opacity: 0; 
+  transform: translateY(40px); /* Збільшуємо початковий зсув */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Збільшуємо тривалість */
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  /* animation: fadeUpEntrance 0.8s ease-out forwards; */
 }
 
 /* ========== Media Queries ========== */
@@ -1016,29 +1177,30 @@ section {
   margin-right: auto; 
 }
 
-/* Базові стилі для літер лого (D, O, I, T) */
+/* Базові стилі для літер лого (Тепер для ВСІХ) */
 .animated-logo .logo-letter {
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 2px var(--color-accent)); /* Початкове світіння */
+  --logo-glow-color: var(--color-accent); /* Змінна для кольору світіння */
+  filter: drop-shadow(0 0 2px var(--logo-glow-color)); /* Початкове світіння */
   transition: filter 0.3s ease-out;
-  /* Перша анімація - різке мерехтіння OPACITY (1 раз) */
-  animation-name: sharpOpacityFlicker;
-  animation-duration: 2.5s;
-  animation-timing-function: steps(1, end);
-  animation-iteration-count: 1; /* Тільки один раз */
-  animation-fill-mode: forwards; /* Залишити opacity: 1 */
-  animation-delay: 1.8s; /* Однакова затримка для всіх */
+  /* Застосовуємо ОБИДВІ анімації до ВСІХ літер */
+  animation-name: sharpOpacityFlicker, sharpGlowFlicker;
+  animation-duration: 1.0s, 2.5s; 
+  animation-timing-function: steps(1, end), steps(1, end);
+  animation-iteration-count: 1, infinite; 
+  animation-fill-mode: forwards, none;
+  animation-delay: 1.8s, 3.0s; 
 }
 
-/* Стиль для літери U (біла, статична) */
+/* Стиль для літери U (біла обводка, біле світіння) */
 .animated-logo .logo-group-u .logo-letter {
   stroke: var(--color-text); 
-  filter: none; 
-  animation: none; /* Скасовуємо будь-які анімації для U */
+  --logo-glow-color: var(--color-text); /* Перевизначаємо змінну на білий */
+  /* filter: none; -- Прибираємо, дозволяємо світіння */
 }
 
 /* Застосовуємо анімацію ПОЯВИ до кожної групи літер */
@@ -1048,21 +1210,6 @@ section {
    animation-duration: 0.6s;
    animation-timing-function: ease-out;
    animation-fill-mode: forwards; 
-}
-
-/* Застосовуємо ДРУГУ анімацію - МЕРЕХТІННЯ СВІТІННЯ (∞) до D, O, I, T */
-.animated-logo .logo-group-d .logo-letter,
-.animated-logo .logo-group-o .logo-letter,
-.animated-logo .logo-group-i .logo-letter,
-.animated-logo .logo-group-t .logo-letter {
-  /* Додаємо другу анімацію через кому */
-  animation-name: sharpOpacityFlicker, sharpGlowFlicker;
-  animation-duration: 2.5s, 2.5s;
-  animation-timing-function: steps(1, end), steps(1, end);
-  animation-iteration-count: 1, infinite; 
-  animation-fill-mode: forwards, none;
-  /* Затримка: Opacity Flicker починається через 1.8s, Glow Flicker - після нього */
-  animation-delay: 1.8s, 4.5s; /* 1.8s + 2.5s + 0.2s buffer = 4.5s */
 }
 
 /* Встановлюємо затримки тільки для ПОЯВИ (simpleFadeIn) груп */
@@ -1078,16 +1225,17 @@ section {
   to { opacity: 1; }
 }
 
-/* Анімація різкого мерехтіння OPACITY (для всіх літер, 1 раз) */
+/* Анімація різкого мерехтіння СВІТІННЯ (використовує змінну кольору) */
+@keyframes sharpGlowFlicker {
+  0%, 100% { filter: drop-shadow(0 0 2px var(--logo-glow-color)); } /* Світіння Є */
+  10%, 30%, 55%, 80% { filter: none; }                          /* Світіння НЕМАЄ */
+  15%, 25%, 60%, 75% { filter: drop-shadow(0 0 2px var(--logo-glow-color)); } /* Світіння Є */
+}
+
+/* Анімація різкого мерехтіння OPACITY (залишається без змін) */
 @keyframes sharpOpacityFlicker {
   0%, 100% { opacity: 1; }
   10%, 30%, 55%, 80% { opacity: 0; }
   15%, 25%, 60%, 75% { opacity: 1; }
 }
 
-/* Анімація різкого мерехтіння СВІТІННЯ (для D, O, I, T, нескінченно) */
-@keyframes sharpGlowFlicker {
-  0%, 100% { filter: drop-shadow(0 0 2px var(--color-accent)); } /* Світіння Є */
-  10%, 30%, 55%, 80% { filter: none; }                          /* Світіння НЕМАЄ */
-  15%, 25%, 60%, 75% { filter: drop-shadow(0 0 2px var(--color-accent)); } /* Світіння Є */
-}

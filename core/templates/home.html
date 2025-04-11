@@ -3,10 +3,10 @@
 
 {% block title %}Головна - IT-рішення для вашого бізнесу{% endblock %}
 
-{% block full_width_top %}
+{% block content %}
+
     <!-- Hero Section -->
     <section class="hero">
-        {# Додаємо контейнер з анімованим SVG логотипом - Спрощена версія, помірна жирність #}
         <div class="logo-container">
           <svg class="animated-logo" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg"> {# Відповідний viewBox #}
             <g class="logo-group-d">
@@ -27,58 +27,40 @@
           </svg>
         </div>
         
-        {# TODO: Додати контент Hero-блоку: заголовок, підзаголовок, CTA-кнопка, можливо фонове зображення #}
+        {# TODO: Додати контент Hero-блоку: заголовок, підзаголовок, CTA-кнопка, можливо фонове зображення - Залишаємо TODO #}
         <h1>Інноваційні IT-рішення для вашого успіху</h1>
         <p>Створюємо ефективні сайти, додатки та боти, які допомагають бізнесу зростати.</p>
         <a href="{% url 'contacts' %}" class="cta-button">Обговорити проєкт</a>
     </section>
     <!-- End Hero Section -->
-{% endblock %}
-
-{% block content %}
 
     <!-- Services Overview Section -->
-    <section class="services-overview">
+    <section class="services-overview animate-on-scroll">
         <h2>Наші Послуги</h2>
         <div class="services-grid">
-            {# Service Card 1 #}
             <div class="service-card">
-                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Розробка Веб-сайтів</h3>
                 <p>Створюємо сучасні, адаптивні сайти та лендінги, що приваблюють клієнтів.</p>
-                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-web-development.png' %}" alt="Розробка Веб-сайтів" class="service-image">
             </div>
-            {# Service Card 2 #}
             <div class="service-card">
-                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Веб-додатки та CRM</h3>
                 <p>Розробляємо складні веб-системи, CRM, ERP для автоматизації бізнес-процесів.</p>
-                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-web-apps-crm.png' %}" alt="Веб-додатки та CRM" class="service-image">
             </div>
-            {# Service Card 3 #}
             <div class="service-card">
-                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>UI/UX Дизайн</h3>
                 <p>Проєктуємо інтуїтивно зрозумілі та привабливі інтерфейси для ваших продуктів.</p>
-                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-ui-ux-design.png' %}" alt="UI/UX Дизайн" class="service-image">
             </div>
-             {# Service Card 4 #}
             <div class="service-card">
-                 {# Прибрано коментар про плейсхолдер іконки #}
                  <h3>Розробка Чат-ботів</h3>
                  <p>Створюємо інтелектуальних ботів (Telegram, Viber) для підтримки та продажів.</p>
-                 {# Прибрано коментар про плейсхолдер зображення #}
                  <img src="{% static 'img/service-chatbot-development.png' %}" alt="Розробка Чат-ботів" class="service-image">
             </div>
-            {# Service Card 5 #}
             <div class="service-card">
-                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Ведення і покращення проектів</h3>
                 <p>Підтримуємо, оновлюємо та розвиваємо існуючі веб-рішення, щоб вони залишалися актуальними.</p>
-                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-project-maintenance.png' %}" alt="Ведення і покращення проектів" class="service-image">
             </div>
             {# Можна додати ще картки - залишено як нагадування #}
@@ -90,91 +72,86 @@
     <!-- End Services Overview Section -->
 
     <!-- Benefits Section -->
-    <section class="benefits">
-        {# Залишено TODO про додавання іконок #}
-        <h2>Наші переваги</h2>
-        <div class="benefits-grid">
-            {# Benefit Card 1 #}
-            <div class="benefit-card" tabindex="0"> {# Залишено коментар про tabindex #}
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Індивідуальний підхід</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
-                    </div>
-                    <div class="benefit-card-back">
-                        <h4>Індивідуальний підхід</h4>
-                        <p>Ми глибоко аналізуємо ваш бізнес та потреби, щоб запропонувати рішення, яке працюватиме саме для вас.</p>
-                    </div>
-                </div>
-            </div>
-            {# Benefit Card 2 #}
-            <div class="benefit-card" tabindex="0">
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Сучасні технології</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
-                    </div>
-                    <div class="benefit-card-back">
-                        <h4>Сучасні технології</h4>
-                        <p>Використовуємо передові фреймворки та підходи для створення швидких, надійних та масштабованих продуктів.</p>
+    <section class="benefits animate-on-scroll">
+        <div class="benefits-content-container">
+            <h2>Наші переваги</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Індивідуальний підхід</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Індивідуальний підхід</h4>
+                            <p>Ми глибоко аналізуємо ваш бізнес та потреби, щоб запропонувати рішення, яке працюватиме саме для вас.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {# Benefit Card 3 #}
-            <div class="benefit-card" tabindex="0">
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Прозорий процес</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
-                    </div>
-                    <div class="benefit-card-back">
-                        <h4>Прозорий процес</h4>
-                        <p>Ви завжди будете в курсі прогресу завдяки регулярним звітам, демонстраціям та відкритій комунікації.</p>
-                    </div>
-                </div>
-            </div>
-            {# Benefit Card 4 #}
-            <div class="benefit-card" tabindex="0">
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Підтримка та розвиток</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
-                    </div>
-                    <div class="benefit-card-back">
-                        <h4>Підтримка та розвиток</h4>
-                        <p>Ми не залишаємо вас після запуску – пропонуємо підтримку, обслуговування та подальший розвиток вашого проєкту.</p>
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Сучасні технології</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Сучасні технології</h4>
+                            <p>Використовуємо передові фреймворки та підходи для створення швидких, надійних та масштабованих продуктів.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {# Benefit Card 5 #}
-            <div class="benefit-card" tabindex="0">
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Безпека та стабільність</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
-                    </div>
-                    <div class="benefit-card-back">
-                        <h4>Безпека та стабільність</h4>
-                        <p>Впроваджуємо сучасні практики захисту та ретельне тестування для надійності вашого продукту.</p>
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Прозорий процес</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Прозорий процес</h4>
+                            <p>Ви завжди будете в курсі прогресу завдяки регулярним звітам, демонстраціям та відкритій комунікації.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-             {# Benefit Card 6 #}
-            <div class="benefit-card" tabindex="0">
-                <div class="benefit-card-inner">
-                    <div class="benefit-card-front">
-                        {# TODO: Додати іконку #}
-                        <h3>Швидкий результат</h3>
-                        <span class="flip-indicator">&gt;&gt;</span>
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Підтримка та розвиток</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Підтримка та розвиток</h4>
+                            <p>Ми не залишаємо вас після запуску – пропонуємо підтримку, обслуговування та подальший розвиток вашого проєкту.</p>
+                        </div>
                     </div>
-                    <div class="benefit-card-back">
-                        <h4>Швидкий результат</h4>
-                        <p>Усі процеси — від ідеї до запуску — ми беремо на себе. Команда працює як єдине ціле: злагоджено, без зайвих етапів і затягувань. Ви отримуєте готовий результат за дні, а не місяці.</p>
+                </div>
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Безпека та стабільність</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Безпека та стабільність</h4>
+                            <p>Впроваджуємо сучасні практики захисту та ретельне тестування для надійності вашого продукту.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefit-card" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            {# TODO: Додати іконку - Залишаємо TODO #}
+                            <h3>Швидкий результат</h3>
+                            <span class="flip-indicator">&gt;&gt;</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <h4>Швидкий результат</h4>
+                            <p>Усі процеси — від ідеї до запуску — ми беремо на себе. Команда працює як єдине ціле: злагоджено, без зайвих етапів і затягувань. Ви отримуєте готовий результат за дні, а не місяці.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,23 +159,10 @@
     </section>
     <!-- End Benefits Section -->
 
-    <!--
-    <section class="cases-preview">
-        {# TODO: Додати контент секції Кейсів: 2-3 приклади кейсів з картинками та посиланням #}
-        <h2>Кейси</h2>
-        <div class="cases-grid">
-            <div class="case-item">Кейс 1</div>
-            <div class="case-item">Кейс 2</div>
-        </div>
-        <a href="{% url 'cases' %}" class="button">Дивитись портфоліо</a>
-    </section>
-    -->
-
     <!-- Process Section -->
-    <section class="process">
+    <section class="process animate-on-scroll">
         <h2>Процес співпраці</h2>
         <div class="process-timeline">
-            <!-- Step 1 -->
             <div class="process-step">
                 <div class="step-number">1</div>
                 <div class="step-content">
@@ -206,7 +170,6 @@
                     <p><strong>Спілкуємось у зручному для вас форматі — зрозуміти суть ідеї та що для вас важливо.</strong><br>Без складних брифів — просто обмін думками, щоб розібратись у вашому баченні.</p>
                 </div>
             </div>
-            <!-- Step 2 -->
             <div class="process-step">
                 <div class="step-number">2</div>
                 <div class="step-content">
@@ -214,7 +177,6 @@
                     <p><strong>Формуємо ідею, концепт і варіанти реалізації.</strong><br>Збираємо все в одну картинку — і даємо чітку пропозицію з варіантами по бюджету й функціоналу.</p>
                 </div>
             </div>
-            <!-- Step 3 -->
             <div class="process-step">
                 <div class="step-number">3</div>
                 <div class="step-content">
@@ -222,7 +184,6 @@
                     <p><strong>Запускаємо основний функціонал якнайшвидше.</strong><br>Показуємо, як виглядає майбутній продукт і починаємо тестувати на реальних користувачах.</p>
                 </div>
             </div>
-            <!-- Step 4 -->
             <div class="process-step">
                 <div class="step-number">4</div>
                 <div class="step-content">
@@ -230,7 +191,6 @@
                     <p><strong>Розширюємо можливості, додаємо інтеграції, покращуємо UX.</strong><br>На цьому етапі продукт починає рости й виходити на новий рівень.</p>
                 </div>
             </div>
-            <!-- Step 5 -->
             <div class="process-step">
                 <div class="step-number">5</div>
                 <div class="step-content">
@@ -243,26 +203,28 @@
     <!-- End Process Section -->
 
     <!-- CTA Section -->
-    <section class="cta">
-        <h2>Зворотній зв'язок</h2>
-        <p class="cta-subtitle">Зв'яжіться з нами для безкоштовної консультації.</p>
-        
-        <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми в action - залишено як актуальне #}
-            {% csrf_token %} {# Залишено коментар про CSRF #}
-            <div class="form-group">
-                <label for="id_name" class="sr-only">Ваше ім'я</label>
-                <input type="text" name="name" id="id_name" placeholder="Ваше ім'я" required class="form-input">
-            </div>
-            <div class="form-group">
-                <label for="id_contact" class="sr-only">Телефон, Telegram, Email...</label>
-                <input type="text" name="contact" id="id_contact" placeholder="Телефон, Telegram, Email..." required class="form-input">
-            </div>
-            <div class="form-group form-group-full">
-                <label for="id_idea" class="sr-only">Опишіть ідею</label>
-                <textarea name="idea" id="id_idea" placeholder="Коротко опишіть вашу ідею чи запитання" rows="4" required class="form-textarea"></textarea>
-            </div>
-            <button type="submit" class="cta-button">Отримати безкоштовну консультацію</button>
-        </form>
+    <section class="cta animate-on-scroll">
+        <div class="cta-content-container">
+            <h2>Зворотній зв'язок</h2>
+            <p class="cta-subtitle">Зв'яжіться з нами для безкоштовної консультації.</p>
+            
+            <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми в action - Залишаємо TODO #}
+                {% csrf_token %} {# Залишаємо коментар про CSRF #}
+                <div class="form-group">
+                    <label for="id_name" class="sr-only">Ваше ім'я</label>
+                    <input type="text" name="name" id="id_name" placeholder="Ваше ім'я" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="id_contact" class="sr-only">Телефон, Telegram, Email...</label>
+                    <input type="text" name="contact" id="id_contact" placeholder="Телефон, Telegram, Email..." required class="form-input">
+                </div>
+                <div class="form-group form-group-full">
+                    <label for="id_idea" class="sr-only">Опишіть ідею</label>
+                    <textarea name="idea" id="id_idea" placeholder="Коротко опишіть вашу ідею чи запитання" rows="4" required class="form-textarea"></textarea>
+                </div>
+                <button type="submit" class="cta-button">Отримати безкоштовну консультацію</button>
+            </form>
+        </div>
     </section>
     <!-- End CTA Section -->
 
