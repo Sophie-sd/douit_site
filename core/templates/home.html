@@ -27,7 +27,6 @@
           </svg>
         </div>
         
-        {# TODO: Додати контент Hero-блоку: заголовок, підзаголовок, CTA-кнопка, можливо фонове зображення - Залишаємо TODO #}
         <h1>Інноваційні IT-рішення для вашого успіху</h1>
         <p>Створюємо ефективні сайти, додатки та боти, які допомагають бізнесу зростати.</p>
         <a href="{% url 'contacts' %}" class="cta-button">Обговорити проєкт</a>
@@ -35,7 +34,7 @@
     <!-- End Hero Section -->
 
     <!-- Services Overview Section -->
-    <section class="services-overview animate-on-scroll">
+    <section class="services-overview reveal-on-scroll">
         <h2>Наші Послуги</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -63,7 +62,6 @@
                 <p>Підтримуємо, оновлюємо та розвиваємо існуючі веб-рішення, щоб вони залишалися актуальними.</p>
                 <img src="{% static 'img/service-project-maintenance.png' %}" alt="Ведення і покращення проектів" class="service-image">
             </div>
-            {# Можна додати ще картки - залишено як нагадування #}
         </div>
         <div class="services-button-wrap">
           <a href="{% url 'services' %}" class="button">Переглянути всі послуги</a>
@@ -72,14 +70,13 @@
     <!-- End Services Overview Section -->
 
     <!-- Benefits Section -->
-    <section class="benefits animate-on-scroll">
+    <section class="benefits reveal-on-scroll">
         <div class="benefits-content-container">
             <h2>Наші переваги</h2>
             <div class="benefits-grid">
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Індивідуальний підхід</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -92,7 +89,6 @@
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Сучасні технології</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -105,7 +101,6 @@
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Прозорий процес</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -118,7 +113,6 @@
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Підтримка та розвиток</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -131,7 +125,6 @@
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Безпека та стабільність</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -144,7 +137,6 @@
                 <div class="benefit-card" tabindex="0">
                     <div class="benefit-card-inner">
                         <div class="benefit-card-front">
-                            {# TODO: Додати іконку - Залишаємо TODO #}
                             <h3>Швидкий результат</h3>
                             <span class="flip-indicator">&gt;&gt;</span>
                         </div>
@@ -160,7 +152,7 @@
     <!-- End Benefits Section -->
 
     <!-- Process Section -->
-    <section class="process animate-on-scroll">
+    <section class="process reveal-on-scroll">
         <h2>Процес співпраці</h2>
         <div class="process-timeline">
             <div class="process-step">
@@ -203,13 +195,13 @@
     <!-- End Process Section -->
 
     <!-- CTA Section -->
-    <section class="cta animate-on-scroll">
+    <section class="cta reveal-on-scroll">
         <div class="cta-content-container">
             <h2>Зворотній зв'язок</h2>
             <p class="cta-subtitle">Зв'яжіться з нами для безкоштовної консультації.</p>
             
-            <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми в action - Залишаємо TODO #}
-                {% csrf_token %} {# Залишаємо коментар про CSRF #}
+            <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми #}
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="id_name" class="sr-only">Ваше ім'я</label>
                     <input type="text" name="name" id="id_name" placeholder="Ваше ім'я" required class="form-input">

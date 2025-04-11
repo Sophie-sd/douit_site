@@ -48,8 +48,6 @@ h1 {
     font-size: 3rem; 
     margin-bottom: 0.5em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
-    opacity: 0; /* Ховаємо для анімації */
-    animation: fadeUpEntrance 0.8s ease-out 1.0s forwards; /* Затримка після лого */
 }
 
 h2 {
@@ -334,11 +332,17 @@ footer {
     text-align: center;
 }
 
+.footer-social {
+    /* Цей блок займає третю колонку гріда */
+    justify-self: end;   /* Притискаємо блок до правого краю колонки */
+    text-align: right;  /* Вирівнюємо заголовок h4 праворуч */
+}
+
 .social-icons {
     display: flex;
     gap: 1.5rem;
     margin-top: 0.2rem;
-    justify-content: flex-start;
+    justify-content: flex-end; /* Вирівнюємо іконки по правому краю */
 }
 
 .social-icons a {
@@ -419,11 +423,11 @@ section {
 }
 
 .hero h1 {
+    opacity: 0; /* Ховаємо для анімації */
+    animation: fadeUpEntrance 0.8s ease-out 1.0s forwards; /* Затримка після лого */
     font-size: 3rem; 
     margin-bottom: 0.5em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
-    opacity: 0; /* Ховаємо для анімації */
-    animation: fadeUpEntrance 0.8s ease-out 1.0s forwards; /* Затримка після лого */
 }
 
 .hero p {
@@ -445,7 +449,7 @@ section {
 }
 
 .benefits {
-    /* TODO: Стилі для секції переваг */
+    /* Стилі для секції переваг */
     background-image:
         linear-gradient(to bottom, var(--color-bg) 0%, transparent 30%), /* Верхнє плавне розмиття */
         linear-gradient(to bottom, transparent 70%, var(--color-bg) 100%), /* Нижнє плавне розмиття */
@@ -458,7 +462,6 @@ section {
     padding-top: 80px;
     padding-bottom: 80px;
     margin-bottom: 3rem; /* Зменшуємо відступ знизу */
-    /* Прибираємо padding-left та padding-right */
 }
 
 /* Новий контейнер для вмісту секції Переваги */
@@ -685,14 +688,7 @@ section {
 }
 
 .cta {
-    /* Прибираємо обмеження ширини, щоб фон був повним */
-    /* max-width: 1200px; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* padding-left: 2rem; */
-    /* padding-right: 2rem; */
-    
-    /* Збільшуємо вертикальні відступи для фону */
+    /* Залишаємо тільки вертикальні відступи, щоб фон був повним */
     padding-top: 120px; /* Збільшуємо */
     padding-bottom: 120px; /* Збільшуємо */
 
@@ -708,7 +704,6 @@ section {
     
     text-align: center;
     border-radius: 0; /* Прибираємо скруглення, бо секція на всю ширину */
-    /* margin-bottom: 2rem; -- Прибираємо відступ перед футером */
 }
 
 /* Новий контейнер для вмісту CTA */
@@ -801,6 +796,7 @@ section {
     text-align: center;
     overflow-x: hidden;
     margin-bottom: 3rem; /* Збільшуємо відступ знизу перед CTA */
+    padding: 3rem 0; /* Додамо відступи */
 }
 
 .process h2 {
@@ -808,18 +804,54 @@ section {
     margin-bottom: 2em;
 }
 
+/* Стилі для контейнера таймлайну */
+.process-timeline {
+    display: flex; 
+    justify-content: space-between; 
+    position: relative;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 1rem; 
+    gap: 2rem; /* Збільшуємо проміжок */
+}
+
+/* Лінія, що з'єднує етапи (псевдоелемент) - робимо штриховою */
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 19px; /* Вирівнюємо по центру номерів (40px / 2 - 1px товщина лінії) */
+    left: 5%; 
+    right: 5%; 
+    height: 2px;
+    /* Створюємо штрихову лінію */
+    background: repeating-linear-gradient(
+        to right,
+        var(--color-accent), /* Використовуємо основний акцентний колір */
+        var(--color-accent) 8px, /* Довжина штриха */
+        transparent 8px, /* Проміжок */
+        transparent 16px /* Довжина проміжку */
+    );
+    z-index: 1; 
+}
+
 /* Загальні стилі для елементів етапу */
 .process-step {
     position: relative;
-    text-align: left;
-    padding: 1.5rem;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 20px rgba(0, 187, 212, 0.05);
+    padding-top: 70px; /* Збільшуємо відступ для номера */
+    margin-bottom: 0; 
+    background-color: transparent; 
     z-index: 2;
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    transition: transform 0.3s ease; /* Додаємо transition для hover-ефекту */
 }
 
-.process-step:last-child {
-    margin-bottom: 0;
+/* Ефект підняття при наведенні */
+.process-step:hover {
+    transform: translateY(-5px);
 }
 
 .step-number {
@@ -831,9 +863,24 @@ section {
     color: var(--color-bg);
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 0 15px 3px rgba(0, 187, 212, 0.5);
+    /* Трохи зменшуємо тінь для чистоти */
+    box-shadow: 0 0 12px 2px rgba(0, 187, 212, 0.4);
+    position: absolute; 
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    margin-bottom: 1rem; 
     z-index: 3;
-    flex-shrink: 0;
+    transition: box-shadow 0.3s ease; /* Плавність зміни тіні */
+}
+
+.step-content {
+    /* Повертаємо відступи та додаємо рамку */
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 187, 212, 0.15); /* Тонка акцентна рамка */
+    border-radius: 12px; /* Більше скруглення */
+    width: 100%; 
+    background-color: rgba(10, 26, 35, 0.3); /* Дуже легкий напівпрозорий фон */
 }
 
 .step-content h3 {
@@ -841,6 +888,7 @@ section {
     margin-bottom: 0.8em;
     color: var(--color-light-turquoise);
     font-weight: 600;
+    text-align: center; /* Центруємо заголовок */
 }
 
 .step-content p {
@@ -848,6 +896,7 @@ section {
     color: var(--color-light-grey);
     margin-bottom: 0;
     line-height: 1.6;
+    text-align: center; /* Центруємо текст */
 }
 
 .step-content p strong {
@@ -869,288 +918,18 @@ section {
 }
 
 /* --- Стилі для анімації при скролі --- */
-/* Коментар: Ці стилі працюватимуть тільки з додаванням JavaScript, 
-   який буде додавати клас '.is-visible' до елементів з класом '.animate-on-scroll', 
-   коли вони потрапляють у видиму область (viewport) за допомогою Intersection Observer. */
 
-.animate-on-scroll {
-  opacity: 0; 
-  transform: translateY(40px); /* Збільшуємо початковий зсув */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Збільшуємо тривалість */
+/* Загальні стилі для нового класу .reveal-on-scroll */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  /* animation: fadeUpEntrance 0.8s ease-out forwards; */
-}
-
-/* ========== Media Queries ========== */
-
-/* --- Планшети (до 992px) --- */
-@media (max-width: 992px) {
-    /* Процес - вертикальний таймлайн */
-    .process h2 {
-        margin-bottom: 2em;
-    }
-    .process-timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    .process-timeline::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 20px;
-        width: 2px;
-        background-color: rgba(255, 255, 255, 0.15);
-        z-index: 1;
-    }
-    .process-step {
-        padding: 1.5rem;
-        padding-left: 60px;
-    }
-    .step-number {
-        position: absolute;
-        left: 0;
-        top: 1.5rem;
-        transform: translateX(0);
-        width: 35px;
-        height: 35px;
-        line-height: 33px;
-    }
-    .step-content h3 {
-        text-align: left;
-    }
-
-    /* Переваги - 2 колонки */
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    .benefit-card-front h3 {
-        font-size: 1.2rem;
-    }
-    .benefit-card-back h4 {
-        font-size: 1.05rem;
-    }
-    .benefit-card-back p {
-        font-size: 0.9rem;
-    }
-}
-
-/* --- Мобільні (до 767px) --- */
-@media (max-width: 767px) {
-    /* Футер: Повертаємо до десктопного вигляду (масштабування) */
-    footer {
-        padding-top: 1.0rem;
-        padding-bottom: 1.0rem;
-    }
-    
-    /* Залишаємо стилі для навігації, які не ламають структуру */
-    .footer-nav-columns {
-        gap: 0.0rem; 
-        flex-direction: column;
-    }
-
-    .footer-nav-column li {
-        margin-bottom: 0.1rem; /* Залишаємо мінімальний відступ */
-    }
-
-    /* Залишаємо стилі для заголовків, контактів, іконок, якщо вони не конфліктують */
-     .footer-section h4 {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-    }
-    .footer-contacts p {
-        margin-bottom: 0.2rem;
-        font-size: 0.85rem;
-    }
-    .footer-contacts a {
-        font-size: 0.85rem;
-    }
-    .social-icons {
-        gap: 1rem;
-        margin-top: 0.4rem;
-    }
-    .footer-copyright {
-        font-size: 0.8rem;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        text-align: center;
-    }
-
-    /* Переваги - 2 колонки */
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.1rem;
-    }
-    .benefit-card-front h3 {
-        font-size: 1.05rem;
-    }
-    .benefit-card-back h4 {
-        font-size: 0.95rem;
-    }
-    .benefit-card-back p {
-        font-size: 0.85rem;
-    }
-    .benefit-card-front,
-    .benefit-card-back {
-        padding: 15px;
-    }
-    .benefit-card {
-        min-height: 200px;
-    }
-    .flip-indicator {
-        font-size: 1rem;
-        margin-top: 5px;
-    }
-
-    /* Послуги - 2 колонки */
-    .services-grid {
-        gap: 1rem;
-    }
-    .service-card {
-        flex-basis: calc(50% - 0.5rem);
-        max-width: calc(50% - 0.5rem);
-        padding: 20px 15px;
-    }
-    .service-card h3 {
-        font-size: 1.1rem;
-    }
-    .service-card p {
-        font-size: 0.9rem;
-    }
-
-    /* Форма CTA - 1 колонка */
-    .cta-form {
-        grid-template-columns: 1fr;
-    }
-    .cta-form .cta-button {
-        grid-column: 1;
-    }
-
-    /* Хедер та Навігація */
-    header nav { 
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: rgba(10, 26, 35, 0.98);
-        backdrop-filter: blur(5px);
-        padding: 1rem 2rem;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    }
-    header nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        text-align: center;
-    }
-    header nav a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.8rem 0;
-        font-size: 1.1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    header nav ul li:last-child a {
-        border-bottom: none;
-    }
-    header nav a::after {
-        display: none;
-    }
-    .burger-menu-button { 
-        display: flex;
-    }
-    body.mobile-nav-active header nav {
-        display: flex;
-    }
-
-    /* Адаптуємо Hero блок */
-    .hero {
-        padding: 80px 1rem 80px 1rem; 
-        min-height: 80vh; 
-        background-size: cover;
-        background-position: center center; 
-    }
-
-    .hero h1 {
-        font-size: 2.2rem; 
-    }
-
-    .hero p {
-        font-size: 1rem; 
-    }
-
-    .hero .cta-button {
-        padding: 12px 24px;
-        font-size: 1rem;
-    }
-}
-
-/* --- Горизонтальний Stepper (>= 993px) --- */
-@media (min-width: 993px) {
-    .process h2 {
-        margin-bottom: 2.5em;
-    }
-
-    .process-timeline {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0;
-        position: static;
-        max-width: none;
-        padding: 0;
-        margin: 0 auto;
-    }
-
-    .process-timeline::before {
-        display: none;
-    }
-
-    .process-step {
-        text-align: center;
-        padding: 2rem 1.5rem;
-        margin-bottom: 0;
-        padding-left: 1.5rem;
-    }
-
-    .process-step:not(:last-child)::after {
-        display: none;
-    }
-
-    .step-number {
-        position: static;
-        display: block;
-        margin: 0 auto 1.5rem auto;
-        transform: none;
-        width: 40px;
-        height: 40px;
-        line-height: 38px;
-    }
-
-    .step-content h3 {
-        text-align: center;
-    }
-}
-
-/* Розміщення контактів та соцмереж у десктопній сітці */
-.footer-contacts {
-    grid-column: 2 / 3; /* Друга (центральна) колонка */
-    justify-self: center; /* Вирівнювання по центру */
-}
-
-.footer-social {
-    grid-column: 3 / 4; /* Третя колонка */
-    justify-self: end; /* Вирівнювання вправо */
+/* Загальне правило для появи елементів */
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* --- Animated Logo Styles (Simplified, Large) --- */
@@ -1200,7 +979,6 @@ section {
 .animated-logo .logo-group-u .logo-letter {
   stroke: var(--color-text); 
   --logo-glow-color: var(--color-text); /* Перевизначаємо змінну на білий */
-  /* filter: none; -- Прибираємо, дозволяємо світіння */
 }
 
 /* Застосовуємо анімацію ПОЯВИ до кожної групи літер */
@@ -1237,5 +1015,498 @@ section {
   0%, 100% { opacity: 1; }
   10%, 30%, 55%, 80% { opacity: 0; }
   15%, 25%, 60%, 75% { opacity: 1; }
+}
+
+/* ========== Загальні стилі сторінок ========== */
+/* Додаємо фон для сторінки послуг */
+body.body-services-bg {
+    background-color: var(--color-bg); /* Базовий фон */
+    background-image: radial-gradient(circle at center, 
+        rgba(24, 48, 64, 1) 0%,  /* Робимо центр світлішим (#183040) */
+        var(--color-bg) 70%      /* Змінюємо точку переходу */
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Фон фіксований при скролі */
+    background-size: cover; /* Покриває всю сторінку */
+}
+
+/* Загальний контейнер для контенту сторінок (не головної) */
+.page-container {
+    max-width: 1200px;
+    margin: 4rem auto; 
+    padding: 0 2rem; 
+    width: 100%;
+}
+
+/* Вступний текст на сторінках */
+.page-intro {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto 3rem auto; /* Центруємо і додаємо відступ знизу */
+    text-align: center;
+    /* Початковий стан для анімації */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Анімація для вступного тексту */
+.page-intro.reveal-on-scroll.is-visible {
+     animation: fadeUpEntrance 0.8s ease-out forwards;
+}
+
+/* --- Сторінка Послуги --- */
+.services-page h1 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    /* Повертаємо початковий стан для анімації */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Повертаємо анімацію для заголовка */
+.services-page h1.reveal-on-scroll.is-visible {
+    animation: fadeUpEntrance 0.8s ease-out forwards;
+}
+
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Відстань між елементами списку */
+    /* Додаємо верхню лінію та відступ над списком */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 3rem; 
+}
+
+.service-list-item {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem; 
+    align-items: center; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 4rem; 
+    /* Елементи, які анімуються при скролі, спочатку невидимі */
+    /* opacity: 0; -- Залишається для .reveal-on-scroll нижче */
+}
+
+/* Робимо елементи з reveal-on-scroll невидимими спочатку */
+.service-list-item.reveal-on-scroll {
+    opacity: 0;
+}
+
+/* Анімація для першого елемента (без скролу) */
+.service-list-item:first-child {
+    opacity: 0; /* Початковий стан для анімації */
+    animation: slideInRight 1.2s ease-out forwards; /* Збільшуємо тривалість */
+    /* Додамо невелику затримку після заголовка/інтро */
+    animation-delay: 0.3s; 
+}
+
+.service-list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    /* margin-bottom: 0; -- Залишається нульовим */
+}
+
+/* Відновлюємо правила чергування */
+/* Непарні: Зображення зліва (1/2), Текст справа (2/3) */
+.service-list-item:nth-child(odd) .service-list-image {
+    grid-column: 1 / 2;
+}
+.service-list-item:nth-child(odd) .service-list-content {
+    grid-column: 2 / 3;
+}
+
+/* Парні: Зображення справа (2/3), Текст зліва (1/2) */
+.service-list-item:nth-child(even) .service-list-image {
+    grid-column: 2 / 3;
+}
+.service-list-item:nth-child(even) .service-list-content {
+    grid-column: 1 / 2;
+    grid-row: 1; /* Текст на тому ж рівні */
+}
+
+/* Оновлюємо стилі для зображення послуги */
+.service-list-image {
+    width: 100%;
+    max-width: 450px; 
+    height: auto; /* Висота контейнера визначається контентом (зображенням) */
+    border-radius: 12px;
+    display: block; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+    justify-self: center; 
+    overflow: hidden; /* Обрізаємо все, що виходить за межі радіусу */
+}
+
+.service-list-image img { /* Стилі для тегу img */
+    display: block;
+    width: 100%; 
+    /* Висота тепер визначається через aspect-ratio */
+    aspect-ratio: 16 / 9; /* Задаємо співвідношення сторін */
+    object-fit: cover; /* Масштабування з обрізанням */
+}
+
+.service-list-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1em;
+    color: var(--color-light-turquoise);
+    /* Центруємо заголовок */
+    text-align: center; 
+}
+
+.service-list-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-light-grey);
+    margin-bottom: 1.5em;
+    /* Обмежуємо ширину та центруємо блок параграфа */
+    max-width: 650px; /* Можна налаштувати за потребою */
+    margin-left: auto;
+    margin-right: auto;
+    /* Центруємо текст всередині параграфа */
+    text-align: center; 
+}
+
+.service-list-content .button {
+    padding: 10px 20px;
+}
+
+/* --- Адаптивність для списку послуг --- */
+/* Відновлюємо медіа-запит для перебудови в одну колонку */
+@media (max-width: 992px) {
+    .service-list-item {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 2rem;
+        text-align: center;
+    }
+    /* Скидаємо чергування для планшетів/мобільних */
+    .service-list-item:nth-child(odd) .service-list-image,
+    .service-list-item:nth-child(even) .service-list-image,
+    .service-list-item:nth-child(odd) .service-list-content,
+    .service-list-item:nth-child(even) .service-list-content {
+        grid-column: 1 / -1; /* Займає всю ширину */
+        grid-row: auto; /* Скидаємо рядки */
+    }
+    .service-list-image {
+        margin-bottom: 1rem;
+        /* Висота також буде автоматичною */
+    }
+    .service-list-content h3 {
+        font-size: 1.6rem;
+        /* Заголовок також центруємо на мобільних/планшетах */
+        text-align: center; 
+    }
+     .service-list-content p {
+         text-align: center; /* Центруємо і текст */
+         /* Прибираємо обмеження ширини на мобільних */
+         max-width: none; 
+     }
+}
+
+/* Анімації для елементів списку послуг */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Застосування СПЕЦИФІЧНИХ анімацій для ЕЛЕМЕНТІВ списку послуг */
+/* Ці правила перевизначать загальний transition для .service-list-item */
+
+/* Парні елементи (текст зліва) з'являються зліва */
+.service-list-item.reveal-on-scroll:nth-child(even).is-visible {
+    animation: slideInLeft 1.2s ease-out forwards; /* Збільшуємо тривалість */
+}
+
+/* Непарні елементи, КРІМ ПЕРШОГО (текст справа), з'являються справа */
+/* Тепер це стосується 3го, 5го, 7го, 9го елементів */
+.service-list-item.reveal-on-scroll:nth-child(odd).is-visible {
+    animation: slideInRight 1.2s ease-out forwards; /* Збільшуємо тривалість */
+}
+
+/* --- Мобільні (до 767px) --- */
+@media (max-width: 767px) {
+    /* Хедер та Навігація */
+    header nav { 
+        display: none; /* Ховаємо десктопну навігацію */
+        position: absolute;
+        top: 100%; /* Відразу під хедером */
+        left: 0;
+        right: 0;
+        background-color: rgba(10, 26, 35, 0.98);
+        backdrop-filter: blur(5px);
+        padding: 1rem 2rem;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        /* Анімація появи мобільного меню */
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none; /* Неактивне, коли приховане */
+    }
+
+    body.mobile-nav-active header nav {
+        display: flex; /* Показуємо меню */
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto; /* Активне */
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    header nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    header nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    header nav a::after { /* Прибираємо підкреслення на моб */
+        display: none;
+    }
+
+    .burger-menu-button { 
+        display: flex; /* Показуємо бургер-кнопку */
+    }
+
+    /* Адаптуємо Hero блок */
+    .hero {
+        padding: 80px 1rem 80px 1rem; 
+        min-height: 80vh; 
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; 
+    }
+
+    .hero p {
+        font-size: 1rem; 
+    }
+
+    .hero .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    /* Адаптуємо переваги - залишаємо 2 колонки, як на планшеті */
+    /* .benefits-grid { -- Видаляємо правило для 1 колонки
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    } */
+
+    /* Адаптуємо послуги на головній - одна колонка */
+    .services-grid {
+        gap: 1.5rem;
+    }
+    .service-card {
+        flex-basis: 100%;
+        max-width: 400px; /* Обмежимо ширину картки */
+        margin: 0 auto; /* Центруємо */
+    }
+
+    /* Форма CTA - 1 колонка */
+    .cta-form {
+        grid-template-columns: 1fr;
+    }
+    .cta-form .cta-button {
+        grid-column: 1;
+    }
+    
+    /* Адаптуємо футер */
+    .footer-content {
+        grid-template-columns: 1fr; /* Одна колонка для вертикального стеку */
+        gap: 1.5rem; /* Збільшимо проміжок між блоками */
+        align-items: center; /* Вирівнюємо по центру вертикально */
+        width: 100%;
+        max-width: none;
+        text-align: center; /* Центруємо текст за замовчуванням */
+    }
+    .footer-logo-nav,
+    .footer-contacts,
+    .footer-social {
+        grid-column: 1 / -1; /* Кожен блок займає всю ширину */
+        justify-self: stretch; /* Розтягуємо блок по ширині */
+        text-align: center; /* Центруємо вміст */
+    }
+    .footer-contacts {
+        /* Невеликі відступи, якщо потрібно */
+         padding: 0 0.5rem; 
+    }
+    .footer-social {
+        /* Забезпечуємо відступ знизу */
+        margin-bottom: 1rem;
+    }
+
+    .footer-nav-columns {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        align-items: center; /* Центруємо навігацію */
+    }
+    .social-icons {
+        justify-content: center; /* Центруємо іконки */
+         margin-top: 0.5rem; 
+    }
+    .footer-section h4 {
+        text-align: center; /* Всі заголовки центруємо */
+    }
+
+}
+
+/* --- Media Query для планшетів та менших екранів --- */
+@media (max-width: 992px) {
+    /* --- Секція Процес (вертикально) --- */
+    .process-timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .process-timeline::before {
+        display: none; /* Ховаємо горизонтальну лінію */
+    }
+
+    .process-step {
+        padding-top: 70px;
+        max-width: 500px; /* Обмежуємо ширину кроку */
+        width: 90%; /* Робимо крок гнучким */
+        text-align: center;
+        align-items: center;
+    }
+
+    .process-step:hover {
+        transform: none; /* Прибираємо hover-ефект на мобільних */
+    }
+
+    .step-content {
+        background-color: rgba(10, 26, 35, 0.5); /* Можна додати фон для чіткості */
+    }
+
+    /* --- Секція Переваги (2 колонки) --- */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr); /* Встановлюємо 2 колонки */
+        gap: 1.5rem; /* Можна трохи зменшити проміжок */
+    }
+
+    /* Опціонально: скоригувати стилі карток для кращого вигляду */
+    .benefit-card-front h3 {
+        font-size: 1.2rem; /* Трохи зменшити шрифт заголовка */
+    }
+    .benefit-card-back h4 {
+        font-size: 1.1rem;
+    }
+    .benefit-card-back p {
+        font-size: 0.9rem;
+    }
+
+     /* --- Список послуг на сторінці Послуги (1 колонка) --- */
+    .service-list-item {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 2rem;
+        text-align: center;
+    }
+    /* Скидаємо чергування для планшетів/мобільних */
+    .service-list-item:nth-child(odd) .service-list-image,
+    .service-list-item:nth-child(even) .service-list-image,
+    .service-list-item:nth-child(odd) .service-list-content,
+    .service-list-item:nth-child(even) .service-list-content {
+        grid-column: 1 / -1; /* Займає всю ширину */
+        grid-row: auto; /* Скидаємо рядки */
+    }
+    .service-list-image {
+        margin-bottom: 1rem;
+        /* Висота також буде автоматичною */
+    }
+    .service-list-content h3 {
+        font-size: 1.6rem;
+        /* Заголовок також центруємо на мобільних/планшетах */
+        text-align: center;
+    }
+     .service-list-content p {
+         text-align: center; /* Центруємо і текст */
+         /* Прибираємо обмеження ширини на мобільних */
+         max-width: none;
+     }
+
+}
+
+/* --- Мобільні (до 767px) --- */
+@media (max-width: 767px) {
+    /* Адаптуємо переваги - залишаємо 2 колонки */
+    /* Стилі для 2 колонок вже є в @media (max-width: 992px) */
+
+    /* Адаптуємо послуги на головній - одна колонка */
+    .services-grid {
+        gap: 1.5rem;
+    }
+    .service-card {
+        flex-basis: 100%;
+        max-width: 400px; /* Обмежимо ширину картки */
+        margin: 0 auto; /* Центруємо */
+    }
+
+    /* Форма CTA - 1 колонка */
+    .cta-form {
+        grid-template-columns: 1fr;
+    }
+    .cta-form .cta-button {
+        grid-column: 1;
+    }
+    
+    /* Адаптуємо футер */
+    .footer-content {
+        grid-template-columns: 1fr; /* Одна колонка для вертикального стеку */
+        gap: 1.5rem; /* Збільшимо проміжок між блоками */
+        align-items: center; /* Вирівнюємо по центру вертикально */
+        width: 100%;
+        max-width: none;
+        text-align: center; /* Центруємо текст за замовчуванням */
+    }
+    .footer-logo-nav,
+    .footer-contacts,
+    .footer-social {
+        grid-column: 1 / -1; /* Кожен блок займає всю ширину */
+        justify-self: stretch; /* Розтягуємо блок по ширині */
+        text-align: center; /* Центруємо вміст */
+    }
+    .footer-contacts {
+        /* Невеликі відступи, якщо потрібно */
+         padding: 0 0.5rem; 
+    }
+    .footer-social {
+        /* Забезпечуємо відступ знизу */
+        margin-bottom: 1rem;
+    }
+
+    .footer-nav-columns {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        align-items: center; /* Центруємо навігацію */
+    }
+    .social-icons {
+        justify-content: center; /* Центруємо іконки */
+         margin-top: 0.5rem; 
+    }
+    .footer-section h4 {
+        text-align: center; /* Всі заголовки центруємо */
+    }
+
 }
 
