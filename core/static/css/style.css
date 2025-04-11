@@ -1016,29 +1016,30 @@ section {
   margin-right: auto; 
 }
 
-/* Базові стилі для літер лого (D, O, I, T) */
+/* Базові стилі для літер лого (Тепер для ВСІХ) */
 .animated-logo .logo-letter {
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 2px var(--color-accent)); /* Початкове світіння */
+  --logo-glow-color: var(--color-accent); /* Змінна для кольору світіння */
+  filter: drop-shadow(0 0 2px var(--logo-glow-color)); /* Початкове світіння */
   transition: filter 0.3s ease-out;
-  /* Перша анімація - різке мерехтіння OPACITY (1 раз) */
-  animation-name: sharpOpacityFlicker;
-  animation-duration: 2.5s;
-  animation-timing-function: steps(1, end);
-  animation-iteration-count: 1; /* Тільки один раз */
-  animation-fill-mode: forwards; /* Залишити opacity: 1 */
-  animation-delay: 1.8s; /* Однакова затримка для всіх */
+  /* Застосовуємо ОБИДВІ анімації до ВСІХ літер */
+  animation-name: sharpOpacityFlicker, sharpGlowFlicker;
+  animation-duration: 1.0s, 2.5s; 
+  animation-timing-function: steps(1, end), steps(1, end);
+  animation-iteration-count: 1, infinite; 
+  animation-fill-mode: forwards, none;
+  animation-delay: 1.8s, 3.0s; 
 }
 
-/* Стиль для літери U (біла, статична) */
+/* Стиль для літери U (біла обводка, біле світіння) */
 .animated-logo .logo-group-u .logo-letter {
   stroke: var(--color-text); 
-  filter: none; 
-  animation: none; /* Скасовуємо будь-які анімації для U */
+  --logo-glow-color: var(--color-text); /* Перевизначаємо змінну на білий */
+  /* filter: none; -- Прибираємо, дозволяємо світіння */
 }
 
 /* Застосовуємо анімацію ПОЯВИ до кожної групи літер */
@@ -1048,21 +1049,6 @@ section {
    animation-duration: 0.6s;
    animation-timing-function: ease-out;
    animation-fill-mode: forwards; 
-}
-
-/* Застосовуємо ДРУГУ анімацію - МЕРЕХТІННЯ СВІТІННЯ (∞) до D, O, I, T */
-.animated-logo .logo-group-d .logo-letter,
-.animated-logo .logo-group-o .logo-letter,
-.animated-logo .logo-group-i .logo-letter,
-.animated-logo .logo-group-t .logo-letter {
-  /* Додаємо другу анімацію через кому */
-  animation-name: sharpOpacityFlicker, sharpGlowFlicker;
-  animation-duration: 2.5s, 2.5s;
-  animation-timing-function: steps(1, end), steps(1, end);
-  animation-iteration-count: 1, infinite; 
-  animation-fill-mode: forwards, none;
-  /* Затримка: Opacity Flicker починається через 1.8s, Glow Flicker - після нього */
-  animation-delay: 1.8s, 4.5s; /* 1.8s + 2.5s + 0.2s buffer = 4.5s */
 }
 
 /* Встановлюємо затримки тільки для ПОЯВИ (simpleFadeIn) груп */
@@ -1078,16 +1064,16 @@ section {
   to { opacity: 1; }
 }
 
-/* Анімація різкого мерехтіння OPACITY (для всіх літер, 1 раз) */
+/* Анімація різкого мерехтіння СВІТІННЯ (використовує змінну кольору) */
+@keyframes sharpGlowFlicker {
+  0%, 100% { filter: drop-shadow(0 0 2px var(--logo-glow-color)); } /* Світіння Є */
+  10%, 30%, 55%, 80% { filter: none; }                          /* Світіння НЕМАЄ */
+  15%, 25%, 60%, 75% { filter: drop-shadow(0 0 2px var(--logo-glow-color)); } /* Світіння Є */
+}
+
+/* Анімація різкого мерехтіння OPACITY (залишається без змін) */
 @keyframes sharpOpacityFlicker {
   0%, 100% { opacity: 1; }
   10%, 30%, 55%, 80% { opacity: 0; }
   15%, 25%, 60%, 75% { opacity: 1; }
-}
-
-/* Анімація різкого мерехтіння СВІТІННЯ (для D, O, I, T, нескінченно) */
-@keyframes sharpGlowFlicker {
-  0%, 100% { filter: drop-shadow(0 0 2px var(--color-accent)); } /* Світіння Є */
-  10%, 30%, 55%, 80% { filter: none; }                          /* Світіння НЕМАЄ */
-  15%, 25%, 60%, 75% { filter: drop-shadow(0 0 2px var(--color-accent)); } /* Світіння Є */
 }
