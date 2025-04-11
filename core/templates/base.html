@@ -30,7 +30,7 @@
 
     <!-- Burger Menu Button -->
     <button class="burger-menu-button" aria-label="Відкрити меню" aria-expanded="false">
-      <span></span> {# Лінії бургера будуть створені через CSS #}
+      <span></span> {# Лінії бургера будуть створені через CSS - залишаємо як нагадування #}
       <span></span>
       <span></span>
     </button>
@@ -38,8 +38,6 @@
 
   </header>
   <!-- End Header -->
-
-  {% block full_width_top %}{% endblock %} {# Новий блок для повноширинних секцій зверху #}
 
   <!-- Main Content -->
   <main>
@@ -57,7 +55,7 @@
             </div>
             <nav class="footer-nav">
                 {# Розділяємо на дві колонки #}
-                <div class="footer-nav-columns"> 
+                <div class="footer-nav-columns">
                     <ul class="footer-nav-column">
                         <li><a href="{% url 'services' %}">Послуги</a></li>
                         <li><a href="{% url 'cases' %}">Кейси</a></li>
@@ -87,10 +85,10 @@
                 </a>
                 <a href="#" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
                     <img src="{% static 'img/icons/icon-telegram.svg' %}" alt="Telegram" class="social-icon-svg">
-                </a> 
+                </a>
                 <a href="#" aria-label="Viber" target="_blank" rel="noopener noreferrer">
                     <img src="{% static 'img/icons/icon-viber.svg' %}" alt="Viber" class="social-icon-svg">
-                </a> 
+                </a>
                 <a href="#" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                     <img src="{% static 'img/icons/icon-whatsapp.svg' %}" alt="WhatsApp" class="social-icon-svg">
                 </a>
