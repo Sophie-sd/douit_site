@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   {% block extra_head %}{% endblock %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
   <!-- Header -->
   <header>
@@ -18,6 +18,10 @@
     <nav>
       {# Навігація для десктопа / контейнер для мобільного меню #}
       <ul>
+        {# Показуємо посилання "Головна" тільки не на головній сторінці #}
+        {% if request.path != '/' %}
+          <li><a href="{% url 'home' %}">Головна</a></li>
+        {% endif %}
         <li><a href="{% url 'services' %}">Послуги</a></li>
         <li><a href="{% url 'cases' %}">Кейси</a></li>
         <li><a href="{% url 'blog' %}">Блог</a></li>
@@ -30,7 +34,7 @@
 
     <!-- Burger Menu Button -->
     <button class="burger-menu-button" aria-label="Відкрити меню" aria-expanded="false">
-      <span></span> {# Лінії бургера будуть створені через CSS - залишаємо як нагадування #}
+      <span></span>
       <span></span>
       <span></span>
     </button>

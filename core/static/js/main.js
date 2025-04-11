@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Intersection Observer для анімації при скролі
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const animatedElements = document.querySelectorAll('.reveal-on-scroll');
 
     // Перевірка, чи є елементи для спостереження
     if (animatedElements.length > 0) {

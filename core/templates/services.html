@@ -3,10 +3,113 @@
 
 {% block title %}Наші Послуги{% endblock %}
 
+{% block body_class %}body-services-bg{% endblock %}
+
 {% block content %}
-    <!-- Services Content -->
-    <h1>Послуги</h1>
-    <p>Детальний опис послуг буде додано тут.</p>
-    {# TODO: Додати список послуг, їх опис #}
-    <!-- End Services Content -->
+    <div class="page-container services-page">
+        <h1 class="reveal-on-scroll">Наші Послуги</h1>
+        <p class="page-intro reveal-on-scroll">Ми пропонуємо повний спектр IT-рішень для вашого бізнесу, від розробки веб-сайтів до складних систем автоматизації та AI-інтеграцій.</p>
+
+        <div class="service-list">
+            <!-- Service Item 1: Розробка сайтів -->
+            <div class="service-list-item">
+                <div class="service-list-image">
+                    <img src="{% static 'img/service-list-1.png' %}" alt="Розробка сайтів">
+                </div>
+                <div class="service-list-content">
+                    <h3>Розробка сайтів</h3>
+                    <p>Створюємо сучасні, швидкі та адаптивні сайти під будь-які бізнес-завдання: від лендінгів до складних мультифункціональних платформ. Ми проєктуємо не просто візуально привабливі, а стратегічно ефективні рішення з урахуванням SEO, швидкості, безпеки та масштабування. Працюємо з кастомними CMS і фреймворками, забезпечуючи легке керування контентом та гнучкість розвитку в майбутньому.</p>
+                </div>
+            </div>
+
+            <!-- Service Item 2: CRM та бізнес-системи -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-2.png' %}" alt="CRM та бізнес-системи">
+                </div>
+                 <div class="service-list-content">
+                     <h3>CRM та бізнес-системи</h3>
+                     <p>Впроваджуємо CRM, ERP та інші бізнес-системи, які автоматизують процеси, підвищують ефективність команд і зменшують рутину. Глибоко аналізуємо бізнес-модель, проєктуємо оптимальну архітектуру, інтегруємо системи з іншими сервісами компанії. Створюємо рішення під конкретні задачі, які легко масштабуються й адаптуються до змін.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 3: UI/UX Дизайн -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-3.png' %}" alt="UI/UX Дизайн">
+                </div>
+                 <div class="service-list-content">
+                     <h3>UI/UX Дизайн</h3>
+                     <p>Дизайн для нас — це не лише гарна картинка. Ми створюємо логічні, інтуїтивні й привабливі інтерфейси, які з першого кліку ведуть користувача до дії. Аналізуємо поведінку, будуємо прототипи, тестуємо сценарії, створюємо унікальні дизайн-системи.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 4: Чат-боти -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-4.png' %}" alt="Чат-боти">
+                </div>
+                 <div class="service-list-content">
+                     <h3>Чат-боти</h3>
+                     <p>Розробляємо розумних асистентів на базі Telegram, Viber, WhatsApp та Web, які автоматизують продажі, консультації, логістику, бронювання та інші процеси. Інтегруємо GPT, CRM, AI-аналітику — ваш бот не просто відповідає, а веде клієнта до результату. Враховуємо стиль бренду, UX і мету кожної взаємодії.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 5: Ведення і покращення проєктів -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-5.png' %}" alt="Ведення і покращення проєктів">
+                </div>
+                 <div class="service-list-content">
+                     <h3>Ведення і покращення проєктів</h3>
+                     <p>Якщо ваш сайт або система вже існує — ми не пропонуємо починати з нуля. Проводимо аудит, визначаємо слабкі місця та беремо на себе розвиток: оптимізуємо код, покращуємо дизайн, додаємо новий функціонал, підвищуємо швидкість. Зробимо вже створений проєкт кращим, конкурентнішим і зручнішим для клієнтів.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 6: AI-інтеграції -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-6.png' %}" alt="AI-інтеграції">
+                </div>
+                 <div class="service-list-content">
+                     <h3>AI-інтеграції</h3>
+                     <p>Допомагаємо інтегрувати штучний інтелект у робочі процеси. GPT-боти, генерація текстів, автоматичні відповіді, внутрішні аналітики, системи рекомендацій — пояснюємо можливості, пропонуємо сценарії, налаштовуємо й тестуємо. Ви отримуєте не просто тренд, а реальну користь для бізнесу.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 7: Автоматизація / No-code -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-7.png' %}" alt="Автоматизація / No-code">
+                </div>
+                 <div class="service-list-content">
+                     <h3>Автоматизація / No-code</h3>
+                     <p>Автоматизуємо бізнес-процеси через інтеграції, API, сценарії та no-code рішення. Налаштовуємо ланцюжки задач, щоб зменшити кількість ручної роботи. Ідеально підходить для швидких запусків, MVP і щоденної оптимізації роботи команд.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 8: Технічний супровід -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-8.png' %}" alt="Технічний супровід">
+                </div>
+                 <div class="service-list-content">
+                     <h3>Технічний супровід</h3>
+                     <p>Завершення проєкту — не кінець, а початок довгострокового партнерства. Після запуску забезпечуємо повну підтримку: моніторинг, оновлення, безпека, резервні копії, хостинг, аналітика, оптимізація. Завжди на зв'язку, завжди в темі вашого проєкту.</p>
+                 </div>
+            </div>
+
+            <!-- Service Item 9: Брендинг і візуальна айдентика -->
+            <div class="service-list-item reveal-on-scroll">
+                 <div class="service-list-image">
+                    <img src="{% static 'img/service-list-9.png' %}" alt="Брендинг і візуальна айдентика">
+                </div>
+                 <div class="service-list-content">
+                     <h3>Брендинг і візуальна айдентика</h3>
+                     <p>Допомагаємо створити сильний візуальний образ вашого бізнесу: від логотипу та кольорової палітри до повної дизайн-системи. Формуємо стиль, який викликає довіру, легко впізнається і резонує з вашою аудиторією. Працюємо на перетині дизайну, маркетингу та смислів — щоб ваш бренд виглядав гідно на будь-якій платформі.</p>
+                 </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %} 
