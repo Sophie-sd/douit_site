@@ -3,16 +3,39 @@
 
 {% block title %}Головна - IT-рішення для вашого бізнесу{% endblock %}
 
-{% block content %}
-
+{% block full_width_top %}
     <!-- Hero Section -->
     <section class="hero">
+        {# Додаємо контейнер з анімованим SVG логотипом - Спрощена версія, помірна жирність #}
+        <div class="logo-container">
+          <svg class="animated-logo" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg"> {# Відповідний viewBox #}
+            <g class="logo-group-d">
+              <path class="logo-letter letter-d" d="M 20 10 L 40 10 Q 55 10 55 25 Q 55 40 40 40 L 20 40 Z" />
+            </g>
+            <g class="logo-group-o">
+              <path class="logo-letter letter-o" d="M 70 25 C 70 12 85 10 90 10 C 95 10 110 12 110 25 C 110 38 95 40 90 40 C 85 40 70 38 70 25 Z" />
+            </g>
+            <g class="logo-group-u">
+              <path class="logo-letter letter-u" d="M 125 10 L 125 30 Q 125 40 137.5 40 Q 150 40 150 30 L 150 10" />
+            </g>
+            <g class="logo-group-i">
+              <path class="logo-letter letter-i" d="M 170 10 L 170 40" />
+            </g>
+             <g class="logo-group-t">
+               <path class="logo-letter letter-t" d="M 190 10 L 220 10 M 205 10 L 205 40" />
+            </g>
+          </svg>
+        </div>
+        
         {# TODO: Додати контент Hero-блоку: заголовок, підзаголовок, CTA-кнопка, можливо фонове зображення #}
         <h1>Інноваційні IT-рішення для вашого успіху</h1>
         <p>Створюємо ефективні сайти, додатки та боти, які допомагають бізнесу зростати.</p>
         <a href="{% url 'contacts' %}" class="cta-button">Обговорити проєкт</a>
     </section>
     <!-- End Hero Section -->
+{% endblock %}
+
+{% block content %}
 
     <!-- Services Overview Section -->
     <section class="services-overview">
@@ -20,45 +43,45 @@
         <div class="services-grid">
             {# Service Card 1 #}
             <div class="service-card">
-                {# Прибираємо плейсхолдер іконки - Видалено #}
+                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Розробка Веб-сайтів</h3>
                 <p>Створюємо сучасні, адаптивні сайти та лендінги, що приваблюють клієнтів.</p>
-                {# Placeholder for image - Видалено #}
+                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-web-development.png' %}" alt="Розробка Веб-сайтів" class="service-image">
             </div>
             {# Service Card 2 #}
             <div class="service-card">
-                {# <div class="service-icon-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Веб-додатки та CRM</h3>
                 <p>Розробляємо складні веб-системи, CRM, ERP для автоматизації бізнес-процесів.</p>
-                {# <div class="service-image-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-web-apps-crm.png' %}" alt="Веб-додатки та CRM" class="service-image">
             </div>
             {# Service Card 3 #}
             <div class="service-card">
-                {# <div class="service-icon-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>UI/UX Дизайн</h3>
                 <p>Проєктуємо інтуїтивно зрозумілі та привабливі інтерфейси для ваших продуктів.</p>
-                {# <div class="service-image-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-ui-ux-design.png' %}" alt="UI/UX Дизайн" class="service-image">
             </div>
              {# Service Card 4 #}
             <div class="service-card">
-                 {# <div class="service-icon-placeholder"></div> - Видалено #}
+                 {# Прибрано коментар про плейсхолдер іконки #}
                  <h3>Розробка Чат-ботів</h3>
                  <p>Створюємо інтелектуальних ботів (Telegram, Viber) для підтримки та продажів.</p>
-                 {# <div class="service-image-placeholder"></div> - Видалено #}
+                 {# Прибрано коментар про плейсхолдер зображення #}
                  <img src="{% static 'img/service-chatbot-development.png' %}" alt="Розробка Чат-ботів" class="service-image">
             </div>
             {# Service Card 5 #}
             <div class="service-card">
-                {# <div class="service-icon-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер іконки #}
                 <h3>Ведення і покращення проектів</h3>
                 <p>Підтримуємо, оновлюємо та розвиваємо існуючі веб-рішення, щоб вони залишалися актуальними.</p>
-                {# <div class="service-image-placeholder"></div> - Видалено #}
+                {# Прибрано коментар про плейсхолдер зображення #}
                 <img src="{% static 'img/service-project-maintenance.png' %}" alt="Ведення і покращення проектів" class="service-image">
             </div>
-            {# Можна додати ще картки #}
+            {# Можна додати ще картки - залишено як нагадування #}
         </div>
         <div class="services-button-wrap">
           <a href="{% url 'services' %}" class="button">Переглянути всі послуги</a>
@@ -68,11 +91,11 @@
 
     <!-- Benefits Section -->
     <section class="benefits">
-        {# TODO: Додати контент секції Переваг: 3-4 ключові переваги з іконками/коротким описом #}
+        {# Залишено TODO про додавання іконок #}
         <h2>Наші переваги</h2>
         <div class="benefits-grid">
             {# Benefit Card 1 #}
-            <div class="benefit-card" tabindex="0"> {# tabindex робить div фокусованим для доступності #}
+            <div class="benefit-card" tabindex="0"> {# Залишено коментар про tabindex #}
                 <div class="benefit-card-inner">
                     <div class="benefit-card-front">
                         {# TODO: Додати іконку #}
@@ -224,8 +247,8 @@
         <h2>Зворотній зв'язок</h2>
         <p class="cta-subtitle">Зв'яжіться з нами для безкоштовної консультації.</p>
         
-        <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми в action #}
-            {% csrf_token %} {# Додаємо CSRF токен для безпеки Django форм #}
+        <form action="" method="post" class="cta-form"> {# TODO: Додати URL для обробки форми в action - залишено як актуальне #}
+            {% csrf_token %} {# Залишено коментар про CSRF #}
             <div class="form-group">
                 <label for="id_name" class="sr-only">Ваше ім'я</label>
                 <input type="text" name="name" id="id_name" placeholder="Ваше ім'я" required class="form-input">
