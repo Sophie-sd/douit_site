@@ -1853,3 +1853,417 @@ body.body-articles-bg {
     transition-delay: 0.3s; /* З'являється трохи пізніше заголовка */
 }
 
+/* ========== Стилі для сторінки "Про нас" ========== */
+
+/* Додаємо позиціонування та базовий фон для body */
+body.about-page {
+    /* position: relative; -- Removed for pattern */
+    /* z-index: 0; -- Removed for pattern */
+    background-color: var(--color-bg); /* Основний фон */
+    /* Додаємо радіальний градієнт - ОНОВЛЕНО */
+    background-image: radial-gradient(circle at top center, 
+        #15384a 0%, /* Трохи світліший центр */
+        var(--color-bg) 80% /* М'якший перехід до основного фону */
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Фіксований фон при скролі */
+    background-size: cover; 
+}
+
+/* Створюємо псевдоелемент для патерну - ВИДАЛЕНО */
+/* body.about-page::before { ... } */
+
+/* Загальний контейнер */
+.about-page .about-container {
+    max-width: 1300px; /* Трохи ширший контейнер */
+    margin: 3rem auto 6rem auto; /* Збільшуємо відступ знизу */
+    padding: 0 2rem;
+    /* position: relative; -- Removed for pattern */
+    /* z-index: 1; -- Removed for pattern */
+}
+
+/* Заголовок сторінки (можна стилізувати окремо, якщо потрібно) */
+.about-page h1 {
+    text-align: center;
+    color: var(--color-light-turquoise);
+    text-shadow: 0 2px 8px rgba(0, 187, 212, 0.25);
+    margin-bottom: 3rem; /* Збільшуємо відступ після заголовка */
+}
+
+/* Секції сторінки */
+.about-intro,
+.about-team,
+.about-founders,
+.about-conclusion {
+    margin-bottom: 4rem;
+    padding: 0 0 2rem 0; /* Прибираємо верхній відступ першої секції, залишаємо нижній */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Легка лінія розділення */
+    /* Додаємо очищення float */
+    display: flow-root;
+}
+
+.about-conclusion {
+    border-bottom: none; /* У останньої секції немає лінії */
+}
+
+/* Вступний блок */
+.about-intro .lead-text {
+    font-size: 1.2rem;
+    color: var(--color-light-grey);
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.about-intro p:not(.lead-text) {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Блок Команда */
+.about-team h2,
+.about-founders h2 {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.about-team p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+/* Блок Засновники */
+.about-founders .founders-intro {
+    text-align: center;
+    color: var(--color-light-grey);
+    margin-bottom: 2rem; /* Зменшуємо відступ перед фото */
+}
+
+/* Додаємо стилі для обгортки зображення */
+.about-intro-image-wrapper {
+    text-align: center; /* Центруємо зображення */
+    margin-bottom: 2.5rem; /* Відступ після зображення */
+}
+
+/* Стилі для самого зображення */
+.about-intro-image {
+    max-width: 350px; /* Ще зменшуємо ширину */
+    height: auto;
+    border-radius: 12px; /* Скруглення кутів */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Тінь */
+    /* Додаємо обтікання текстом */
+    float: left;
+    margin-right: 2rem; /* Відступ справа від тексту */
+    margin-bottom: 1rem; /* Відступ знизу від тексту */
+}
+
+.founder-grid {
+    display: grid; /* Змінюємо на 2 колонки для текстів */
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; /* Відстань між картками засновників */
+    margin-bottom: 3rem;
+}
+
+.founder-card {
+    display: block; /* Просто блок, бо фото видалено */
+    align-items: center;
+}
+
+.founder-text h3 {
+    color: var(--color-soft);
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.founder-text p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+/* Текст під картками засновників */
+.founders-conclusion {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-style: italic;
+    color: var(--color-light-grey);
+    margin-top: 2rem;
+}
+
+/* Заключний блок */
+.about-conclusion {
+    text-align: center;
+    padding: 3rem 0 0 0;
+}
+
+.about-conclusion h3 {
+    color: var(--color-light-turquoise);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-conclusion p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Адаптивність для сторінки Про нас */
+@media (max-width: 992px) {
+    .founder-card,
+    .founder-card.founder-oleg {
+        /* Видаляємо зміну grid-template-columns */
+        text-align: center;
+    }
+
+    .founder-text h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Робимо тексти в одну колонку на планшеті */
+    .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem; /* Зменшуємо gap */
+    }
+
+    .founder-text h3 {
+        margin-top: 0; /* Прибираємо зайвий відступ зверху */
+    }
+
+    /* Адаптивність для спільного фото */
+    .founders-shared-photo {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-page .about-container {
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        padding: 0 1.5rem; /* Коригуємо бічні відступи */
+    }
+
+    .about-page h1 {
+        font-size: 2.2rem; /* Повертаємо більший розмір на моб */
+        margin-bottom: 1.5rem;
+    }
+
+    .about-intro .lead-text {
+        font-size: 1.1rem;
+    }
+
+    .founder-text h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Прибираємо float на мобільних і центруємо зображення */
+    .about-intro-image,
+    .founders-shared-photo {
+        float: none;
+        display: block; /* Щоб margin: auto працював */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem; /* Збільшуємо відступ знизу */
+        max-width: 80%; /* Робимо ширину гнучкою */
+    }
+
+    .about-intro-image-wrapper,
+    .founders-photo-wrapper {
+        margin-bottom: 0; /* Скидаємо відступ обгорток */
+    }
+}
+
+/* Стилі для спільного фото засновників */
+.founders-shared-photo {
+    max-width: 300px; /* Ще зменшуємо ширину */
+    height: auto;
+    border-radius: 12px; /* Скруглення */
+    border: 3px solid var(--color-accent); /* Рамка */
+    box-shadow: 0 8px 25px rgba(0, 187, 212, 0.2); /* Тінь */
+    /* Додаємо обтікання текстом */
+    float: right;
+    margin-left: 2.5rem; /* Відступ зліва від тексту */
+    margin-bottom: 1rem; /* Відступ знизу */
+ }
+ 
+ .founder-grid {
+    display: grid; /* Змінюємо на 2 колонки для текстів */
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; /* Відстань між картками засновників */
+    margin-bottom: 3rem;
+}
+
+/* Стилі для самого зображення */
+.about-intro-image {
+    max-width: 600px; /* Встановлюємо меншу фіксовану ширину */
+    height: auto;
+    border-radius: 12px; /* Скруглення кутів */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Тінь */
+    /* Додаємо обтікання текстом */
+    float: left;
+    margin-right: 2rem; /* Відступ справа від тексту */
+    margin-bottom: 1rem; /* Відступ знизу від тексту */
+ }
+
+/* Нові стилі для вступного блоку з Flexbox */
+.about-intro {
+    display: flex;
+    align-items: center; /* Вирівнюємо по вертикалі */
+    gap: 3rem; /* Проміжок між фото і текстом */
+    /* Прибираємо display: flow-root, бо використовуємо flex */
+}
+
+.about-intro p:not(.lead-text) {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+/* Стилі для текстового блоку */
+.about-intro-text {
+    max-width: 700px; /* Обмежуємо ширину тексту */
+    margin: 0 auto; /* Центруємо блок тексту */
+}
+
+/* Додаємо Flexbox для вертикального центрування */
+.about-team {
+    /* Додаємо Flexbox для вертикального центрування вмісту */
+    display: flex;
+    flex-direction: column; /* Основна вісь - вертикальна */
+    justify-content: center; /* Центрування по вертикалі */
+    /* Прибираємо min-height, додаємо padding для створення простору */
+    /* min-height: 20vh; */
+    padding-top: 2rem;    /* Додаємо внутрішній відступ зверху */
+    padding-bottom: 2rem; /* Додаємо внутрішній відступ знизу */
+    text-align: center; /* Горизонтальне центрування тексту залишаємо */
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    /* Додаємо border-bottom, який був у загальних стилях секцій */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* === Responsiveness === */
+
+/* --- Tablet Styles --- */
+@media (max-width: 992px) {
+    /* ... existing 992px styles ... */
+
+    /* About Page Tablet Styles */
+    .about-page .about-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .about-page h1 {
+        font-size: 2.5rem; /* Slightly smaller H1 */
+    }
+
+    .about-intro {
+        /* Keep image and text side-by-side for now, adjust spacing */
+        gap: 1.5rem;
+    }
+
+    .about-intro-image {
+         max-width: 45%; /* Adjust image size */
+    }
+
+    .founder-grid {
+        gap: 1.5rem; /* Reduce gap between founder cards */
+    }
+
+    /* ... potentially other 992px adjustments for about page ... */
+}
+
+
+/* --- Mobile Styles --- */
+@media (max-width: 767px) {
+    /* ... existing 767px styles ... */
+
+    /* About Page Mobile Styles */
+    .about-page .about-container {
+        padding-left: 1rem; /* Further reduce padding */
+        padding-right: 1rem;
+    }
+
+    .about-page h1 {
+        font-size: 2rem; /* Smaller H1 on mobile */
+    }
+     .about-page h2 {
+        font-size: 1.75rem;
+    }
+     .about-page h3 {
+        font-size: 1.25rem;
+    }
+     .about-page p {
+         font-size: 0.95rem; /* Slightly smaller base text */
+     }
+
+    .about-intro {
+        flex-direction: column; /* Stack image and text */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text when stacked */
+    }
+
+    .about-intro-image {
+        max-width: 80%; /* Allow image to be larger when stacked */
+        margin-bottom: 1.5rem;
+        order: -1; /* Show image above text */
+    }
+
+     .about-intro-image-wrapper, /* Adjust wrapper if used */
+     .founders-photo-wrapper, /* Target wrapper for shared photo too */
+     .about-intro-text {
+         max-width: 100%; /* Allow text to take full width */
+         margin-left: 0;
+         margin-right: 0;
+         /* Ensure wrapper doesn't add extra margin */
+         margin-bottom: 0; 
+     }
+
+    .about-team {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .founder-grid {
+        grid-template-columns: 1fr; /* Single column for founders */
+        gap: 2rem; /* Increase gap when stacked */
+    }
+
+    .founder-card {
+        padding: 1rem; /* Adjust card padding */
+        text-align: center; /* Center text content in the card */
+    }
+
+    .founders-shared-photo {
+        float: none !important; /* Ensure no floating */
+        display: block !important; /* Ensure it's a block for margin auto */
+        margin-left: auto !important; /* Center horizontally */
+        margin-right: auto !important; /* Center horizontally */
+        max-width: 90%; /* Ensure shared photo scales */
+        margin-bottom: 1.5rem; /* Keep bottom margin */
+    }
+
+    .about-conclusion {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* ... potentially other 767px adjustments for about page ... */
+}
+
+/* ... rest of the file ... */
+
