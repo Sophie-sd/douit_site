@@ -9,7 +9,7 @@ def services(request):
 def cases(request):
     return render(request, 'cases.html')
 
-def blog(request):
+def article_list(request):
     return render(request, 'blog_list.html')
 
 def about(request):
