@@ -919,8 +919,10 @@ section {
 
 /* --- Стилі для анімації при скролі --- */
 
-/* Загальні стилі для нового класу .reveal-on-scroll */
+/* Загальні стилі для секцій, що запускають анімацію */
 .reveal-on-scroll {
+    /* Залишаємо цей клас на секціях як маркер для JS */
+    /* Повертаємо старі стилі */
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -1020,14 +1022,11 @@ section {
 /* ========== Загальні стилі сторінок ========== */
 /* Додаємо фон для сторінки послуг */
 body.body-services-bg {
-    background-color: var(--color-bg); /* Базовий фон */
-    background-image: radial-gradient(circle at center, 
-        rgba(24, 48, 64, 1) 0%,  /* Робимо центр світлішим (#183040) */
-        var(--color-bg) 70%      /* Змінюємо точку переходу */
-    );
+    background-color: var(--color-bg);
+    background-image: radial-gradient(ellipse at center, #0d2533 0%, var(--color-bg) 70%); /* Градієнт з темного синьо-зеленого */
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Фон фіксований при скролі */
-    background-size: cover; /* Покриває всю сторінку */
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* Загальний контейнер для контенту сторінок (не головної) */
@@ -1508,5 +1507,349 @@ body.body-services-bg {
         text-align: center; /* Всі заголовки центруємо */
     }
 
+}
+
+/* ========== Стилі для сторінки Блогу ========== */
+
+.articles-page .page-container { /* Змінено */
+    margin-top: 3rem; /* Зменшимо верхній відступ */
+}
+
+.articles-grid { /* Змінено */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Три колонки за замовчуванням */
+    gap: 2rem; /* Відстань між картками */
+    margin-top: 3rem;
+}
+
+.article-card { /* Змінено */
+    background-color: var(--color-graphite); /* Темний фон картки */
+    border-radius: 16px;
+    overflow: hidden; /* Обрізаємо зображення по рамці */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Додамо ледь помітну загальну рамку */
+}
+
+.article-card:hover { /* Змінено */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 187, 212, 0.15); /* Легка акцентна тінь */
+}
+
+.article-card-image-link { /* Змінено */
+    display: block;
+}
+
+.article-card-image { /* Змінено */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Співвідношення сторін для зображення */
+    overflow: hidden;
+}
+
+.article-card-image img { /* Змінено */
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Масштабуємо зображення, зберігаючи пропорції */
+    transition: transform 0.4s ease;
+}
+
+.article-card:hover .article-card-image img { /* Змінено */
+    transform: scale(1.05); /* Легке збільшення зображення при наведенні */
+}
+
+.article-card-content { /* Змінено */
+    padding: 1.5rem; /* Внутрішні відступи */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Дозволяє контенту зайняти решту місця */
+    /* Додаємо градієнт */
+    background: linear-gradient(to top, var(--color-bg) 0%, var(--color-graphite) 80%);
+    /* Додаємо тонку рамку зверху для відділення від картинки */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    /* Переносимо скруглення на цей блок теж (нижні кути) */
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.article-card-date { /* Змінено */
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.article-card-title { /* Змінено */
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.article-card-title a { /* Змінено */
+    color: var(--color-text); /* Білий колір для заголовків */
+    transition: color 0.3s ease;
+}
+
+.article-card-title a:hover { /* Змінено */
+    color: var(--color-accent); /* Акцентний при наведенні */
+}
+
+.article-card-excerpt { /* Змінено */
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Дозволяє тексту зайняти доступне місце */
+}
+
+/* --- Адаптивність для блогу --- */
+
+/* Планшети: 2 колонки */
+@media (max-width: 992px) {
+    .articles-grid { /* Змінено */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Мобільні: 1 колонка */
+@media (max-width: 767px) {
+    .articles-grid { /* Змінено */
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== Стилі для Модального вікна (Блог) ========== */
+
+.modal {
+    display: none; /* Приховано за замовчуванням */
+    position: fixed; /* Фіксована позиція */
+    z-index: 1100; /* Поверх інших елементів */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Додає скрол, якщо контент не влазить */
+}
+
+.modal.is-open {
+    display: flex; /* Показуємо як flex для центрування */
+    align-items: center; /* Центруємо вертикально */
+    justify-content: center; /* Центруємо горизонтально */
+}
+
+.modal-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 26, 35, 0.85); /* Темний напівпрозорий фон */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1101;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1102;
+    /* Прибираємо фон, він буде заданий зображенням */
+    /* background-color: var(--color-graphite); */
+    margin: auto; /* Додаткове центрування */
+    padding: 0; /* Паддінг буде для внутрішніх елементів */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 700px; /* Максимальна ширина вікна */
+    max-height: 85vh; /* Максимальна висота, щоб не виходило за екран */
+    overflow: hidden; /* ВАЖЛИВО: Приховуємо скрол на цьому рівні */
+    display: flex; /* Для розташування тексту */
+    flex-direction: column; /* Елементи один під одним */
+    animation: fadeInModal 0.4s ease-out; /* Анімація появи */
+    background-size: cover; /* Масштабуємо фон */
+    background-position: center center; /* Центруємо фон */
+    color: var(--color-text); /* Основний колір тексту - білий */
+}
+
+/* Накладання градієнту для затемнення фону */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(10, 26, 35, 0.7), rgba(10, 26, 35, 0.85)); /* Градієнт затемнення */
+    border-radius: 16px; /* Скруглення має бути й у псевдоелемента */
+    z-index: 1; /* Під текстом, над фоном */
+}
+
+/* Новий контейнер для скролу */
+.modal-scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Додаємо скрол саме сюди */
+    padding: 2.5rem; /* Переносимо відступи сюди */
+    position: relative; /* Потрібно для позиціонування кнопки */
+    z-index: 2; /* Має бути над градієнтом */
+}
+
+/* Прибираємо стилі для видаленого modal-image */
+/* .modal-image { ... } */
+
+.modal-text-content {
+    padding: 0; /* Прибираємо відступи звідси */
+    position: relative; /* Залишаємо для контексту */
+    z-index: 2;
+    flex-grow: 1; /* Щоб займав весь доступний простір */
+    margin-bottom: 1em;
+}
+
+.modal-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7); /* Трохи світліше для кращого контрасту */
+    margin-bottom: 0.75rem;
+}
+
+.modal-title {
+    font-size: 2rem; /* Ще трохи збільшимо */
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--color-text);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Легка тінь для читабельності */
+}
+
+.modal-excerpt {
+    font-size: 1.05rem; /* Трохи збільшимо текст прев'ю */
+    color: rgba(255, 255, 255, 0.9); /* Світліше для кращого контрасту */
+    line-height: 1.7;
+    margin-bottom: 1.5rem; /* Додамо відступ перед повним текстом */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 1.5rem 0;
+}
+
+.modal-full-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 1em;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px; /* Трохи відсунемо */
+    right: 20px; /* Трохи відсунемо */
+    color: rgba(255, 255, 255, 0.8); /* Зробимо яскравішим */
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease; /* Додамо transform */
+    padding: 0;
+    z-index: 1103; /* Має бути вище за ::before */
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--color-accent); /* Акцентний при наведенні */
+    transform: scale(1.1); /* Легке збільшення */
+    text-decoration: none;
+    outline: none;
+}
+
+/* Анімація появи модального вікна */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Стилі для запобігання скролу body, коли модальне вікно відкрите */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Стилі для повного тексту статті в модальному вікні */
+.modal-full-content h4 {
+    font-size: 1.3rem;
+    color: var(--color-light-turquoise); /* Акцентний колір для підзаголовків */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-full-content ul {
+    list-style: none; /* Прибираємо маркери за замовчуванням */
+    padding-left: 0; /* Прибираємо відступ */
+    margin-bottom: 1.5rem;
+}
+
+.modal-full-content li {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5em; /* Відступ для імітації маркера */
+    position: relative;
+}
+
+/* Додаємо кастомний маркер (кружечок або іконку) */
+.modal-full-content li::before {
+    content: '•'; /* Можна замінити на іконку ✅ ❓ тощо */
+    color: var(--color-accent); /* Колір маркера */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.modal-full-content strong {
+    color: var(--color-soft); /* Виділяємо жирний текст */
+}
+
+/* --- Стилі для сторінки "Статті" --- */ /* Додано */
+.articles-page h1 {
+    text-align: center;
+    /* Застосовуємо основний світло-бірюзовий колір */
+    color: var(--color-light-turquoise);
+    /* Додаємо акцентну тінь для об'єму */
+    text-shadow: 0 3px 10px rgba(0, 187, 212, 0.3); /* Розмита тінь знизу */
+    margin-bottom: 0.75em; /* Стандартний відступ для h1 */
+    /* Змінюємо затримку анімації (якщо використовуємо reveal-on-scroll) */
+    transition-delay: 0.1s; /* З'являється трохи раніше */
+}
+
+.articles-page .page-container { /* Змінено */
+    max-width: 1400px; /* Ширший контейнер для сітки */
+    padding-top: 20px; /* Ще зменшуємо відступ зверху */
+}
+
+/* --- Фон для сторінки Статті --- */
+body.body-articles-bg {
+    background-color: var(--color-bg); /* Базовий фон */
+    background-image: radial-gradient(circle at top center, /* Центр зверху */
+        #102a3a 0%,  /* Трохи світліший синьо-зелений центр */
+        var(--color-bg) 80%      /* Перехід до основного фону */
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Додаємо затримку для анімації опису */
+.articles-page .page-intro.reveal-on-scroll {
+    transition-delay: 0.3s; /* З'являється трохи пізніше заголовка */
 }
 
