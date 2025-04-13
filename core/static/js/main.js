@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Burger Menu Logic
     const burgerButton = document.querySelector('.burger-menu-button');
-    const nav = document.querySelector('header nav'); 
-    const body = document.body; 
+    const nav = document.querySelector('header nav');
+    const body = document.body;
 
     if (burgerButton && nav) {
         burgerButton.addEventListener('click', function() {
@@ -65,11 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         animatedElements.forEach(element => {
             observer.observe(element);
         });
-    } 
-    // else { 
-    //     console.log('No elements found for scroll animation.'); 
-    //     // Можна розкоментувати для дебагу, якщо елементи не знаходяться
-    // }
+    }
 
     // --- Blog Modal Logic ---
     const modal = document.getElementById('articleModal');
